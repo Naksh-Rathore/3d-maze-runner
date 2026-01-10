@@ -3,7 +3,8 @@ CXX := g++
 CXXFLAGS := -std=c++23 -Wall -Wextra -O2 \
     -I external/glad/ \
     -I external/glfw/include \
-    -I include/
+    -I include/external \
+	-I include/maze
 
 LDFLAGS := -L external/glfw/lib-mingw-w64 -lglfw3 -lgdi32 -lopengl32
 
