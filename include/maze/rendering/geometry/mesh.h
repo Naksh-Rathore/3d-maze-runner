@@ -31,8 +31,8 @@ namespace Rendering {
             void uploadData();
             void uploadComponent(int index, int size, int stride, void *offset);
 
-            const std::vector<GLfloat> vertices() { return m_vertices; }
-            const std::vector<GLuint> indices() { return m_indices; }
+            const std::vector<GLfloat>& vertices() { return m_vertices; }
+            const std::vector<GLuint>& indices() { return m_indices; }
 
             int componentAmount() { return m_componentAmount; }
 
