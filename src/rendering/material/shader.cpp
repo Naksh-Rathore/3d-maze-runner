@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string_view>
+#include <cassert>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -36,6 +37,10 @@ namespace Rendering {
     }
 
     void Shader::compileShader() {
+        assert(!m_hasCompiled && "ERROR: Shader cannot be compiled twice!");
+
+        m_hasCompiled = true;
+
         const char *shaderContent { m_shaderSourceContent.c_str() };
 
         glShaderSource(m_shader, 1, &shaderContent, nullptr);

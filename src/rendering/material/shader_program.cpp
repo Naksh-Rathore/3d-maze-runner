@@ -1,6 +1,8 @@
 #include "rendering/material/shader_program.h"
 #include "rendering/material/shader.h"
 
+#include <cassert>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -15,19 +17,16 @@ namespace Rendering {
     }
 
     void ShaderProgram::link(Shader& vertexShader, Shader& fragmentShader) {
+        assert(!m_hasLinked && "ERROR: Shader program cannot be linked twice!");
+
+        m_hasLinked = true;
+
         glAttachShader(m_shaderProgram, vertexShader.shader());
         glAttachShader(m_shaderProgram, fragmentShader.shader());
         glLinkProgram(m_shaderProgram);
 
         glDetachShader(m_shaderProgram, vertexShader.shader());
         glDetachShader(m_shaderProgram, fragmentShader.shader());
-
-        glDeleteShader(vertexShader.shader());
-        glDeleteShader(fragmentShader.shader());
-    }
-
-    void ShaderProgram::use() {
-        glUseProgram(m_shaderProgram);
     }
 
 }

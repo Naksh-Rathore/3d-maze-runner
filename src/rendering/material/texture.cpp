@@ -3,12 +3,17 @@
 
 #include <iostream>
 #include <string>
+#include <cassert>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Rendering {
     void Texture2D::link(const std::string& fileName, GLenum wrapOption, GLenum mipMapMinOption, GLenum mipMapMagOption) {
+        assert(!m_hasLinked && "ERROR: Texture cannot be linked twice");
+
+        m_hasLinked = true;
+
         int width, height, nrChannels;
         stbi_set_flip_vertically_on_load(true);
         
@@ -32,11 +37,6 @@ namespace Rendering {
         glGenerateMipmap(GL_TEXTURE_2D);
 
         stbi_image_free(data);
-    }
-
-    void Texture2D::use(GLuint unit) {
-        glActiveTexture(GL_TEXTURE0 + unit);
-        glBindTexture(GL_TEXTURE_2D, m_texture);
     }
 
     Texture2D::~Texture2D() {

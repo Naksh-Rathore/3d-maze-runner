@@ -1,5 +1,4 @@
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#pragma once
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -10,16 +9,15 @@ namespace Rendering {
     class Texture2D {
         private:
             GLuint m_texture{};
+            
+            bool m_hasLinked = false;
 
         public:
             void link(const std::string& fileName, GLenum wrapOption, GLenum mipMapMinOption, GLenum mipMapMagOption);
-            void use(GLuint unit = 0);
 
             ~Texture2D();
 
             GLuint texture() { return m_texture; }
-            void setTexture(GLuint t) { m_texture = t; }
     };
 }
 
-#endif

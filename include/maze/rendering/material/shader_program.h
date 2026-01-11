@@ -10,15 +10,14 @@ namespace Rendering {
         private:
             GLuint m_shaderProgram{};
 
+            bool m_hasLinked = false;
+
         public:
             ShaderProgram();
             ~ShaderProgram();
 
             void link(Shader& vertexShader, Shader& fragmentShader);
-            void use();
 
             GLuint shaderProgram() const { return m_shaderProgram; }
-            void setShaderProgram(GLuint val) { m_shaderProgram = val; }
-
     };
 }

@@ -13,5 +13,4 @@ struct Material {
     Rendering::Texture2D m_texture;
 
     Material(const std::string& vertShaderPath, const std::string& fragShaderPath, const std::string& texturePath);
-    void use(GLuint unit = 0);
 };
