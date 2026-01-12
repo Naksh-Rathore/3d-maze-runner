@@ -19,7 +19,7 @@ else
 endif
 
 OBJS := $(SRCS:.cpp=.o)
-TARGET := main.exe
+TARGET := 3d-maze-runner.exe
 
 all: $(TARGET)
 
