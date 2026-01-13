@@ -12,7 +12,7 @@
 
 namespace Rendering {
     World::World()
-        : m_camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 5.0f, 0.25f)
+        : m_camera(glm::vec3(0.0f, 80.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 5.0f, 0.25f)
         , m_planeMesh(std::vector<GLfloat>{-0.5f, -0.5f, 0.f, 0.f, 0.f, 0.5f, -0.5f, 0.f, 1.f, 0.f, 0.5f, 0.5f, 0.f, 1.f, 1.f, -0.5f, 0.5f, 0.f, 0.f, 1.f },
                       std::vector<GLuint>{ 0, 1, 2, 2, 3, 0 },
                     5)
