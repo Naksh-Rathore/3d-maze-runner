@@ -8,7 +8,7 @@
 namespace Rendering {
     Renderer::Renderer(const glm::mat4& projection) : m_projection(projection) {}
 
-    void Renderer::renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view, int count, int first) {
+    void Renderer::renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view) {
         for (const RenderCommand& command : renderQueue) {
             command.m_material->use(0);
             
@@ -19,7 +19,7 @@ namespace Rendering {
             glBindVertexArray(command.m_mesh->VAO());
             
             if (command.m_mesh->indices().empty())
-                glDrawArrays(command.m_mesh->drawMode(), first, count);
+                glDrawArrays(command.m_mesh->drawMode(), 0, command.m_mesh->vertices().size() / command.m_mesh->componentAmount());
             else {
                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, command.m_mesh->EBO());
                 glDrawElements(command.m_mesh->drawMode(), command.m_mesh->indices().size(), GL_UNSIGNED_INT, nullptr);

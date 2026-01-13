@@ -12,6 +12,8 @@ namespace GameObject {
     , m_camSpeed { camSpeed }
     , m_mouseSensi { mouseSensi }
     , m_zoom { 45.0f }
+    , m_yaw { yaw }          
+    , m_pitch { pitch }  
     {
         updateCameraVectors();
     }

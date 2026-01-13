@@ -4,6 +4,7 @@
 #include "game_objects/fly_cam.h"
 
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 #include <vector>
 
@@ -16,8 +17,12 @@ namespace Rendering {
 
         public:
             World();
+
+            void updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime);
+            void updateCameraMouse(double xposIn, double yposIn);
             
-            void updateCamera(float dt, GameObject::CameraDirection direction, float mouseDX, float mouseDY, float scrollY);
             void setRenderQueue(std::vector<RenderCommand>& renderQueue);
+
+            GameObject::FlyCamera& camera() { return m_camera; }
     };
 }

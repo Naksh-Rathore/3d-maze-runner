@@ -22,6 +22,6 @@ namespace Rendering {
         public:
             Renderer(const glm::mat4& projection);
             
-            void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view, int count, int first = 0);
+            void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view);
     };  
 }

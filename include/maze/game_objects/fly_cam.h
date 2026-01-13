@@ -29,6 +29,11 @@ namespace GameObject {
         float m_mouseSensi{};
         float m_zoom{};
 
+        float m_lastX;
+        float m_lastY;
+
+        bool m_firstMouse = true;
+
         void updateCameraVectors();
 
     public:
@@ -72,6 +77,15 @@ namespace GameObject {
 
         float zoom() const { return m_zoom; }
         void zoom(float val) { m_zoom = val; }      
+
+        float lastX() { return m_lastX; }
+        float lastY() { return m_lastY; }
+
+        void setLastX(float x) { m_lastX = x; }
+        void setLastY(float y) { m_lastY = y; }
+
+        bool firstMouse() { return m_firstMouse; }
+        void setFirstMouse(bool f) { m_firstMouse = f; }
 };
     
 }

@@ -19,9 +19,26 @@ namespace Rendering {
         // Add functionally later when there are game entities
     }
 
-    void World::updateCamera(float dt, GameObject::CameraDirection direction, float mouseDX, float mouseDY, float scrollY) {
-        m_camera.processKeyboardInput(direction, dt);
-        m_camera.processMouseInput(mouseDX, mouseDY, true);
-        m_camera.processScrollInput(scrollY);
+    void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
+        m_camera.processKeyboardInput(direction, deltaTime);
+    }
+
+    void World::updateCameraMouse(double xposIn, double yposIn) {
+        float xpos = static_cast<float>(xposIn);
+        float ypos = static_cast<float>(yposIn);
+
+        if (m_camera.firstMouse()) {
+            m_camera.setLastX(xpos);
+            m_camera.setLastY(ypos);
+            
+            m_camera.setFirstMouse(false);
+            return;
+        }
+
+        float xoffset = xpos - m_camera.lastX();
+        float yoffset = m_camera.lastY() - ypos; // reversed since y-coordinates go from bottom to top
+
+        m_camera.setLastX(xpos);
+        m_camera.setLastY(ypos);
     }
 }
