@@ -34,3 +34,4 @@ class Game {
         
         GLFWwindow *window() { return m_window; }
 };  
+

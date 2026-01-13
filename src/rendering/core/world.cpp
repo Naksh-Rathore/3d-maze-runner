@@ -48,5 +48,7 @@ namespace Rendering {
 
         m_camera.setLastX(xpos);
         m_camera.setLastY(ypos);
+
+        m_camera.processMouseInput(xoffset, yoffset);
     }
 }

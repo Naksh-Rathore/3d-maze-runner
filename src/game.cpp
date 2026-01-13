@@ -58,7 +58,13 @@ void Game::mainLoop() {
 }
 
 void Game::run() {
-    // To Do: Set up every member 
+    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetWindowUserPointer(m_window, this);
+
+    glfwSetCursorPosCallback(m_window, [](GLFWwindow* w, double x, double y){
+        Game* game = static_cast<Game*>(glfwGetWindowUserPointer(w));
+        game->m_world.updateCameraMouse(x, y);
+    });
 
     glEnable(GL_DEPTH_TEST);
 
