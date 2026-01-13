@@ -24,7 +24,12 @@ namespace Rendering {
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
         // Render plane
-        renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, glm::mat4(1.0f) });
+        glm::mat4 model(1.0f);
+
+        model = glm::scale(model, glm::vec3(50.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+        renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, model});
     }
 
     void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
