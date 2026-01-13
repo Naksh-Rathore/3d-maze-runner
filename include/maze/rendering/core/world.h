@@ -2,6 +2,8 @@
 
 #include "rendering/core/renderer.h"
 #include "game_objects/fly_cam.h"
+#include "rendering/geometry/mesh.h"
+#include "rendering/material/material.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -11,7 +13,9 @@
 namespace Rendering {
     class World {
         private:
-            // Add objects meshes & materials later
+                        
+            Rendering::Mesh m_planeMesh;
+            Rendering::Material m_planeMaterial;
 
             GameObject::FlyCamera m_camera;
 

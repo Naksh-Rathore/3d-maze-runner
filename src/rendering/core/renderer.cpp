@@ -16,6 +16,8 @@ namespace Rendering {
             command.m_material->m_shader.setMat4("view", view);
             command.m_material->m_shader.setMat4("projection", m_projection);
 
+            command.m_material->m_shader.setInt("texture1", 0);
+
             glBindVertexArray(command.m_mesh->VAO());
             
             if (command.m_mesh->indices().empty())
