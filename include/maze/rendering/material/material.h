@@ -38,6 +38,22 @@ namespace Rendering {
         void link(Shader& vertexShader, Shader& fragmentShader);
 
         GLuint shaderProgram() const { return m_shaderProgram; }
+
+        void setMat4(const char* name, const glm::mat4& mat) const { 
+            glUniformMatrix4fv(glGetUniformLocation(m_shaderProgram, name), 1, GL_FALSE, &mat[0][0]); 
+        }
+
+        void setVec3(const char* name, const glm::vec3& vec) const { 
+            glUniform3fv(glGetUniformLocation(m_shaderProgram, name), 1, &vec[0]); 
+        }
+
+        void setFloat(const char* name, float value) const { 
+            glUniform1f(glGetUniformLocation(m_shaderProgram, name), value); 
+        }
+
+        void setInt(const char* name, int value) const { 
+            glUniform1i(glGetUniformLocation(m_shaderProgram, name), value); 
+        }
     };
 
 
@@ -64,6 +80,8 @@ namespace Rendering {
         Rendering::Texture2D m_texture;
 
         Material(const std::string& vertShaderPath, const std::string& fragShaderPath, const std::string& texturePath);
+
+        void use(GLuint textureUnit = 0);
     };
 
 }

@@ -123,4 +123,11 @@ namespace Rendering {
         m_shader.link(m_vert, m_frag);
         m_texture.link(texturePath, GL_REPEAT, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
     }
+
+    void Material::use(GLuint textureUnit) {
+        glUseProgram(m_shader.shaderProgram());
+
+        glActiveTexture(GL_TEXTURE0 + textureUnit);
+        glBindTexture(GL_TEXTURE_2D, m_texture.texture());
+    }
 }
