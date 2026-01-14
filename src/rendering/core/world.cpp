@@ -16,7 +16,7 @@ namespace Rendering {
         , m_planeMesh(std::vector<GLfloat>{-0.5f, -0.5f, 0.f, 0.f, 0.f, 0.5f, -0.5f, 0.f, 1.f, 0.f, 0.5f, 0.5f, 0.f, 1.f, 1.f, -0.5f, 0.5f, 0.f, 0.f, 1.f },
                       std::vector<GLuint>{ 0, 1, 2, 2, 3, 0 },
                     5)
-        , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.jpg")
+        , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
