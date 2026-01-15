@@ -19,6 +19,9 @@ namespace Rendering {
             Rendering::Material m_planeMaterial;
             glm::mat4 m_planeModel;
 
+            Rendering::Mesh m_wallMesh;
+            Rendering::Material m_wallMaterial;
+
             GameObject::FlyCamera m_camera;
 
         public:

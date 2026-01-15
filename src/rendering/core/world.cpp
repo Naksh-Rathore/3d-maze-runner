@@ -14,14 +14,21 @@
 namespace Rendering {
     World::World()
         : m_camera(glm::vec3(0.0f, 80.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 5.0f, 0.25f)
+
         , m_planeMesh(CommonVertices::SquareVertices,
                       CommonVertices::SquareIndices,
                     5)
         , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
         , m_planeModel(glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)), glm::vec3(50.0f)))
+
+        , m_wallMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
+        , m_wallMaterial("assets/wall/wall.vs", "assets/wall/wall.fs", "assets/wall/texture.jpg")
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
+    
+        m_wallMesh.uploadData();
+        m_wallMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
     }
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
