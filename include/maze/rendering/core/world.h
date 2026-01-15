@@ -7,6 +7,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include <vector>
 
@@ -16,6 +17,7 @@ namespace Rendering {
                         
             Rendering::Mesh m_planeMesh;
             Rendering::Material m_planeMaterial;
+            glm::mat4 m_planeModel;
 
             GameObject::FlyCamera m_camera;
 

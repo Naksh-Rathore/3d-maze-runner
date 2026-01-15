@@ -17,6 +17,7 @@ namespace Rendering {
                       std::vector<GLuint>{ 0, 1, 2, 2, 3, 0 },
                     5)
         , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
+        , m_planeModel(glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)), glm::vec3(50.0f)))
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
@@ -24,12 +25,7 @@ namespace Rendering {
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
         // Render plane
-        glm::mat4 model(1.0f);
-
-        model = glm::scale(model, glm::vec3(50.0f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-
-        renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, model});
+        renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
     }
 
     void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
