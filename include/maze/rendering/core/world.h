@@ -2,6 +2,7 @@
 
 #include "rendering/core/renderer.h"
 #include "game_objects/fly_cam.h"
+#include "game_objects/entities/wall.h"
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
 
@@ -14,7 +15,10 @@
 namespace Rendering {
     class World {
         private:
-                        
+                
+            std::vector<GameObject::Wall> m_walls;
+
+
             Rendering::Mesh m_planeMesh;
             Rendering::Material m_planeMaterial;
             glm::mat4 m_planeModel;

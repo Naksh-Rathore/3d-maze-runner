@@ -29,11 +29,18 @@ namespace Rendering {
     
         m_wallMesh.uploadData();
         m_wallMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
+
+        // Just for demonstration, the real project will call another function to parse the data and have as many bricks as possible
+        m_walls.push_back({glm::vec3(0.0f, 10.0f, 0.0f), glm::vec3(5.0f, 10.0f, 10.0f)});
     }
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
         // Render plane
         renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
+
+        for (GameObject::Wall wall : m_walls) 
+            renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix() });
+        
     }
 
     void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
