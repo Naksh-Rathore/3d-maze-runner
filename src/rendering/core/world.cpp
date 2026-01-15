@@ -30,7 +30,7 @@ namespace Rendering {
         m_wallMesh.uploadData();
         m_wallMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
 
-        // Just for demonstration, the real project will call another function to parse the data and have as many bricks as possible
+        // Just for demonstration, the real project will call another function to parse the data and have as many bricks as needed
         m_walls.push_back({glm::vec3(0.0f, 10.0f, 0.0f), glm::vec3(5.0f, 10.0f, 10.0f)});
     }
 
