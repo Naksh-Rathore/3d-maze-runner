@@ -20,9 +20,6 @@ class Game {
         float m_deltaTime;
         float m_lastTime;
 
-        float lastX;
-        float lastY;
-
         void mainLoop();
         void processInput();
 
