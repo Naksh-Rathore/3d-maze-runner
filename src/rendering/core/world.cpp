@@ -3,6 +3,7 @@
 #include "game_objects/fly_cam.h"
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
+#include "utils/common_vertices.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -13,8 +14,8 @@
 namespace Rendering {
     World::World()
         : m_camera(glm::vec3(0.0f, 80.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 5.0f, 0.25f)
-        , m_planeMesh(std::vector<GLfloat>{-0.5f, -0.5f, 0.f, 0.f, 0.f, 0.5f, -0.5f, 0.f, 1.f, 0.f, 0.5f, 0.5f, 0.f, 1.f, 1.f, -0.5f, 0.5f, 0.f, 0.f, 1.f },
-                      std::vector<GLuint>{ 0, 1, 2, 2, 3, 0 },
+        , m_planeMesh(CommonVertices::SquareVertices,
+                      CommonVertices::SquareIndices,
                     5)
         , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
         , m_planeModel(glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)), glm::vec3(50.0f)))
