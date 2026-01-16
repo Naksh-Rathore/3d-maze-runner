@@ -18,7 +18,6 @@ namespace Rendering {
                 
             std::vector<GameObject::Wall> m_walls;
 
-
             Rendering::Mesh m_planeMesh;
             Rendering::Material m_planeMaterial;
             glm::mat4 m_planeModel;
