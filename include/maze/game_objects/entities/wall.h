@@ -11,10 +11,10 @@ namespace GameObject {
             glm::vec3 m_worldPos;
             glm::vec3 m_scale;
 
-            bool m_isRotated;
+            bool m_isVertical;
 
         public:
-            Wall(const glm::vec3& worldPos, const glm::vec3& scale, bool m_isRotated);
+            Wall(const glm::vec3& worldPos, const glm::vec3& scale, bool isVertical);
 
             glm::mat4 modelMatrix() const;
 
