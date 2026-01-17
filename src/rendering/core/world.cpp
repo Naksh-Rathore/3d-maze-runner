@@ -33,7 +33,6 @@ namespace Rendering {
     }
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
-        // Render plane
         renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
 
         for (GameObject::Wall wall : m_walls) 
