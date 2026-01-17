@@ -22,7 +22,6 @@ namespace Level {
         const float cell_x = 10.0f;
         const float cell_z = 10.0f;
 
-        // Wall
         const float wall_height = 10.0f;
 
         const float eps = 0.02f;
