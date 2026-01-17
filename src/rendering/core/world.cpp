@@ -16,9 +16,7 @@ namespace Rendering {
     World::World()
         : m_camera(glm::vec3(0.0f, 80.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.125f)
 
-        , m_planeMesh(CommonVertices::SquareVertices,
-                      CommonVertices::SquareIndices,
-                    5)
+        , m_planeMesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
         , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
         , m_planeModel(glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)), glm::vec3(50.0f)))
 
