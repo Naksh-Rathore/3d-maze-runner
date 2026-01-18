@@ -11,10 +11,8 @@ namespace GameObject {
             glm::vec3 m_worldPos;
             glm::vec3 m_scale;
 
-            bool m_isHorizontal;
-
         public:
-            Wall(const glm::vec3& worldPos, const glm::vec3& scale, bool isHorizontal);
+            Wall(const glm::vec3& worldPos, const glm::vec3& scale);
 
             glm::mat4 modelMatrix() const;
 
