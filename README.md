@@ -13,8 +13,8 @@ This project is licensed under the **MIT License**. Contributions are welcome an
 ---
 
 ## Dependencies
-- g++ Compiler
-- make utility
+- `g++` Compiler
+- `make` utility
 - Tested only on **Windows** (using **MinGW**)
 - All dependencies must be in your system PATH
 
