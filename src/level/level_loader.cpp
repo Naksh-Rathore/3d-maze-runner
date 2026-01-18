@@ -69,9 +69,6 @@ namespace Level {
 
             case '#':
                 return GameObject::Wall(pos, scale);
-
-            case 'w':
-                return GameObject::Wall(pos, scale);
         }
     }
 
