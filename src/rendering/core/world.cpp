@@ -8,11 +8,9 @@
 #include "game_objects/entities/chest.h"
 
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
 #include <vector>
-#include <iostream>
 
 namespace Rendering {
     World::World()
@@ -38,8 +36,6 @@ namespace Rendering {
         m_chestMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
 
         Level::LevelLoader::loadLevel("assets/levels/level1.txt", m_walls, m_chests);
-
-        std::cout << m_chests.size() << "\n";
     }
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
