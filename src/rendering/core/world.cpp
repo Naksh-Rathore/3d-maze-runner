@@ -49,7 +49,7 @@ namespace Rendering {
             renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix() });
 
         for (GameObject::Chest chest : m_chests) {
-            if (!chest.isCollected())
+            if (chest.isCollected())
                 continue;
 
             renderQueue.push_back({ &m_chestMesh, &m_chestMaterial, chest.modelMatrix() });
