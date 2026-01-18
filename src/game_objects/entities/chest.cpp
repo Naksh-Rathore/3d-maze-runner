@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 
 namespace GameObject {
-    Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale, bool shouldAnimate = true)
+    Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale, bool shouldAnimate)
         : m_worldPos(worldPos)
         , m_scale(scale)
         , m_isCollected(false)
@@ -24,5 +24,7 @@ namespace GameObject {
 
         model = glm::translate(model, pos);
         model = glm::scale(model, m_scale);
+
+        return model;
     }
 }
