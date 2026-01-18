@@ -6,5 +6,5 @@ Here is a table of every symbol and it's role:
 | Symbol | Role          |
 |--------|---------------|
 | `.`    | Walking Path  |
-| `W`    | Wall          |
+| `#`    | Wall          |
 | `C`    | Chest         |
