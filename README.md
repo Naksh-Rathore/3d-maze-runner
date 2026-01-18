@@ -1,7 +1,5 @@
 # 3D Maze Runner
 
-[GitHub Repository](https://github.com/Naksh-Rathore/3d-maze-runner)
-
 ## Overview
 3D Maze Runner is a real-time 3D maze exploration game inspired by classic titles like Doom. It features:
 
