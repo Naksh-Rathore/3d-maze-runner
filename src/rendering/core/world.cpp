@@ -12,6 +12,7 @@
 #include <glm/glm.hpp>
 
 #include <vector>
+#include <iostream>
 
 namespace Rendering {
     World::World()
@@ -36,10 +37,9 @@ namespace Rendering {
         m_chestMesh.uploadData();
         m_chestMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
 
-        Level::LevelLoader::loadLevel("assets/levels/level1.txt", m_walls);
+        Level::LevelLoader::loadLevel("assets/levels/level1.txt", m_walls, m_chests);
 
-        // Demo only
-        m_chests.push_back({glm::vec3(0.0f, 50.0f, 0.0f), glm::vec3(10.0f)});
+        std::cout << m_chests.size() << "\n";
     }
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {

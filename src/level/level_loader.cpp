@@ -8,7 +8,7 @@
 #include <optional>
 
 namespace Level {
-    void LevelLoader::loadLevel(const std::string& levelFilePath, std::vector<GameObject::Wall>& walls) {
+    void LevelLoader::loadLevel(const std::string& levelFilePath, std::vector<GameObject::Wall>& walls, std::vector<GameObject::Chest>& chests) {
         std::ifstream levelFile(levelFilePath);
         
         std::string levelFileContentBuffer;
@@ -32,11 +32,13 @@ namespace Level {
 
         glm::vec3 currentPos(-20.0f, wall_height * 0.5f, -20.0f);
 
-        glm::vec3 scale(
+        glm::vec3 wallScale(
             wall_scale_x,
             wall_scale_y,
             wall_scale_z
         );
+
+        glm::vec3 chestScale(2.5f);
 
         const float startX = currentPos.x;
 
@@ -50,7 +52,10 @@ namespace Level {
             if (symbol == '\r')
                 continue;
 
-            if (auto wall = getWallFromSymbol(symbol, currentPos, scale))
+            if (auto chest = getChestFromSymbol(symbol, currentPos, chestScale))
+                chests.push_back(chest.value());
+
+            else if (auto wall = getWallFromSymbol(symbol, currentPos, wallScale))
                 walls.push_back(wall.value());
 
             currentPos.x += cell_x;
@@ -68,5 +73,12 @@ namespace Level {
             case '|':
                 return GameObject::Wall(pos, scale, false);
         }
+    }
+
+    std::optional<GameObject::Chest> LevelLoader::getChestFromSymbol(char symbol, const glm::vec3& pos, const glm::vec3& scale) {
+        if (symbol != 'C' && symbol != 'c') 
+            return std::nullopt;
+
+        return GameObject::Chest(pos, scale);
     }
 }

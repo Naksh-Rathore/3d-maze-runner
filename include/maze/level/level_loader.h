@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game_objects/entities/wall.h"
+#include "game_objects/entities/chest.h"
 
 #include <glm/glm.hpp>
 
@@ -12,8 +13,9 @@ namespace Level {
     class LevelLoader {
         private:
             static std::optional<GameObject::Wall> getWallFromSymbol(char symbol, const glm::vec3& pos, const glm::vec3& scale);
+            static std::optional<GameObject::Chest> getChestFromSymbol(char symbol, const glm::vec3& pos, const glm::vec3& scale);
 
         public:
-            static void loadLevel(const std::string& levelFilePath, std::vector<GameObject::Wall>& walls);
+            static void loadLevel(const std::string& levelFilePath, std::vector<GameObject::Wall>& walls, std::vector<GameObject::Chest>& chests);
     };
 }   
