@@ -5,6 +5,7 @@
 #include "game_objects/entities/wall.h"
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
+#include "game_objects/entities/chest.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -17,6 +18,7 @@ namespace Rendering {
         private:
                 
             std::vector<GameObject::Wall> m_walls;
+            std::vector<GameObject::Chest> m_chests;
 
             Rendering::Mesh m_planeMesh;
             Rendering::Material m_planeMaterial;
@@ -24,6 +26,9 @@ namespace Rendering {
 
             Rendering::Mesh m_wallMesh;
             Rendering::Material m_wallMaterial;
+
+            Rendering::Mesh m_chestMesh;
+            Rendering::Material m_chestMaterial;
 
             GameObject::FlyCamera m_camera;
 

@@ -5,6 +5,7 @@
 #include "rendering/material/material.h"
 #include "utils/common_vertices.h"
 #include "level/level_loader.h"
+#include "game_objects/entities/chest.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -22,6 +23,9 @@ namespace Rendering {
 
         , m_wallMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
         , m_wallMaterial("assets/wall/wall.vs", "assets/wall/wall.fs", "assets/wall/texture.jpg")
+
+        , m_chestMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
+        , m_chestMaterial("assets/chest/chest.vs", "assets/chest/chest.fs", "assets/chest/texture.png")
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
@@ -29,7 +33,13 @@ namespace Rendering {
         m_wallMesh.uploadData();
         m_wallMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
 
+        m_chestMesh.uploadData();
+        m_chestMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
+
         Level::LevelLoader::loadLevel("assets/levels/level1.txt", m_walls);
+
+        // Demo only
+        m_chests.push_back({glm::vec3(0.0f, 50.0f, 0.0f), glm::vec3(10.0f)});
     }
 
     void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
@@ -37,7 +47,13 @@ namespace Rendering {
 
         for (GameObject::Wall wall : m_walls) 
             renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix() });
-        
+
+        for (GameObject::Chest chest : m_chests) {
+            if (!chest.isCollected())
+                continue;
+
+            renderQueue.push_back({ &m_chestMesh, &m_chestMaterial, chest.modelMatrix() });
+        }
     }
 
     void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
