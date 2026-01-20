@@ -1,6 +1,6 @@
 #include "rendering/core/world.h"
 #include "rendering/core/renderer.h"
-#include "game_objects/fly_cam.h"
+#include "game_objects/cameras/fly_cam.h"
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
 #include "utils/common_vertices.h"
