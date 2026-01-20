@@ -46,46 +46,39 @@ namespace GameObject {
         void processScrollInput(float yOffset);
 
         const glm::vec3& pos() const { return m_pos; }
-        void pos(const glm::vec3& val) { m_pos = val; }
+        void setPos(const glm::vec3& val) { m_pos = val; }
 
         const glm::vec3& front() const { return m_front; }
-        void front(const glm::vec3& val) { m_front = val; }
-
-        const glm::vec3& up() const { return m_up; }
-        void up(const glm::vec3& val) { m_up = val; }
-
-        const glm::vec3& direction() const { return m_direction; }
-        void direction(const glm::vec3& val) { m_direction = val; }
+        void setFront(const glm::vec3& val) { m_front = val; }
 
         const glm::vec3& right() const { return m_right; }
-        void right(const glm::vec3& val) { m_right = val; }
-
-        const glm::vec3& worldUp() const { return m_worldUp; }
-        void worldUp(const glm::vec3& val) { m_worldUp = val; }
-
-        float yaw() const { return m_yaw; }
-        void yaw(float val) { m_yaw = val; }
-
-        float pitch() const { return m_pitch; }
-        void pitch(float val) { m_pitch = val; }
-
-        float camSpeed() const { return m_camSpeed; }
-        void camSpeed(float val) { m_camSpeed = val; }
+        void setRight(const glm::vec3& val) { m_right = val; }
 
         float mouseSensi() const { return m_mouseSensi; }
-        void mouseSensi(float val) { m_mouseSensi = val; }
+        void setMouseSensi(float val) { m_mouseSensi = val; }
+
+        float camSpeed() const { return m_camSpeed; } 
 
         float zoom() const { return m_zoom; }
-        void zoom(float val) { m_zoom = val; }      
+        void zoom(float val) { m_zoom = val; }
 
-        float lastX() { return m_lastX; }
-        float lastY() { return m_lastY; }
+        float lastX() const { return m_lastX; }
+        float lastY() const { return m_lastY; }
 
         void setLastX(float x) { m_lastX = x; }
         void setLastY(float y) { m_lastY = y; }
 
-        bool firstMouse() { return m_firstMouse; }
+        bool firstMouse() const { return m_firstMouse; } 
         void setFirstMouse(bool f) { m_firstMouse = f; }
-};
+
+    };
     
+    class WalkCamera : public FreeCamera {
+        private:
+            float m_groundPos;
+
+        public:
+            WalkCamera(float groundPos = 0.0f);
+            void processKeyboardInput(CameraDirection direction, float deltaTime);
+    };
 }

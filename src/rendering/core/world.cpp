@@ -14,7 +14,7 @@
 
 namespace Rendering {
     World::World()
-        : m_camera(glm::vec3(0.0f, 80.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.125f)
+        : m_camera(5.0f)
 
         , m_planeMesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
         , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
@@ -59,6 +59,8 @@ namespace Rendering {
     void World::updateCameraMouse(double xposIn, double yposIn) {
         float xpos = static_cast<float>(xposIn);
         float ypos = static_cast<float>(yposIn);
+
+        m_camera.firstMouse();
 
         if (m_camera.firstMouse()) {
             m_camera.setLastX(xpos);

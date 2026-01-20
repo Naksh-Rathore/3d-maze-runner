@@ -72,4 +72,27 @@ namespace GameObject {
         m_up = glm::normalize(glm::cross(m_right, m_front));
     }
 
+    WalkCamera::WalkCamera(float groundPos)
+        : FreeCamera(glm::vec3(0.0f, groundPos, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.125f)
+        , m_groundPos(groundPos)
+    {}
+
+    void WalkCamera::processKeyboardInput(CameraDirection direction, float deltaTime) {
+        float camSpeed { this->camSpeed() * deltaTime };
+
+        if (direction == FORWARD)
+            setPos(pos() + front() * camSpeed);
+        if (direction == BACKWARD)
+            setPos(pos() - front() * camSpeed);
+        if (direction == RIGHT)  
+            setPos(pos() + right() * camSpeed);
+        if (direction == LEFT)
+            setPos(pos() - right() * camSpeed);
+
+        glm::vec3 currentPos = pos();
+        currentPos.y = m_groundPos;
+
+        setPos(currentPos);
+    }
+
 }
