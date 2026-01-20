@@ -60,8 +60,6 @@ namespace Rendering {
         float xpos = static_cast<float>(xposIn);
         float ypos = static_cast<float>(yposIn);
 
-        m_camera.firstMouse();
-
         if (m_camera.firstMouse()) {
             m_camera.setLastX(xpos);
             m_camera.setLastY(ypos);
