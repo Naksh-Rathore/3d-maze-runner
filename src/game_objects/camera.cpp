@@ -5,7 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 namespace GameObject {
-    FlyCamera::FlyCamera(const glm::vec3& pos, const glm::vec3& front, const glm::vec3& up, float yaw, float pitch, float camSpeed, float mouseSensi)
+    FreeCamera::FreeCamera(const glm::vec3& pos, const glm::vec3& front, const glm::vec3& up, float yaw, float pitch, float camSpeed, float mouseSensi)
     : m_pos { pos }
     , m_front { front }
     , m_worldUp { up }
@@ -18,11 +18,11 @@ namespace GameObject {
         updateCameraVectors();
     }
 
-    glm::mat4 FlyCamera::viewMatrix() {
+    glm::mat4 FreeCamera::viewMatrix() {
         return glm::lookAt(m_pos, m_pos + m_front, m_up);
     }
 
-    void FlyCamera::processKeyboardInput(CameraDirection direction, float deltaTime) {
+    void FreeCamera::processKeyboardInput(CameraDirection direction, float deltaTime) {
         float camSpeed { m_camSpeed * deltaTime };
 
         if (direction == FORWARD)
@@ -35,7 +35,7 @@ namespace GameObject {
             m_pos -= m_right * camSpeed;
     }
 
-    void FlyCamera::processMouseInput(float xOffset, float yOffset, bool stopRoll) {
+    void FreeCamera::processMouseInput(float xOffset, float yOffset, bool stopRoll) {
         xOffset *= m_mouseSensi;
         yOffset *= m_mouseSensi;
 
@@ -52,7 +52,7 @@ namespace GameObject {
         updateCameraVectors();
     }
 
-    void FlyCamera::processScrollInput(float yOffset) {
+    void FreeCamera::processScrollInput(float yOffset) {
         m_zoom -= (float) yOffset;
 
         if (m_zoom < 1.0f)
@@ -61,7 +61,7 @@ namespace GameObject {
             m_zoom = 45.0f;
     }
 
-    void FlyCamera::updateCameraVectors() {
+    void FreeCamera::updateCameraVectors() {
         m_front.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
         m_front.y = sin(glm::radians(m_pitch));
         m_front.z = sin(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));

@@ -13,7 +13,7 @@ namespace GameObject {
         RIGHT
     };  
 
-    class FlyCamera {
+    class FreeCamera {
     private:
         glm::vec3 m_pos{};
         glm::vec3 m_front{};
@@ -37,7 +37,7 @@ namespace GameObject {
         void updateCameraVectors();
 
     public:
-        FlyCamera(const glm::vec3& pos, const glm::vec3& front, const glm::vec3& up, float yaw, float pitch, float camSpeed, float mouseSensi);
+        FreeCamera(const glm::vec3& pos, const glm::vec3& front, const glm::vec3& up, float yaw, float pitch, float camSpeed, float mouseSensi);
 
         glm::mat4 viewMatrix();
 

@@ -29,7 +29,7 @@ namespace Rendering {
             Rendering::Mesh m_chestMesh;
             Rendering::Material m_chestMaterial;
 
-            GameObject::FlyCamera m_camera;
+            GameObject::FreeCamera m_camera;
 
         public:
             World();
@@ -39,6 +39,6 @@ namespace Rendering {
             
             void setRenderQueue(std::vector<RenderCommand>& renderQueue);
 
-            GameObject::FlyCamera& camera() { return m_camera; }
+            GameObject::FreeCamera& camera() { return m_camera; }
     };
 }
