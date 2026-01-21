@@ -1,11 +1,16 @@
 #include "rendering/core/world.h"
 #include "rendering/core/renderer.h"
-#include "game_objects/camera.h"
+
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
-#include "utils/common_vertices.h"
-#include "level/level_loader.h"
+
+#include "game_objects/camera.h"
 #include "game_objects/entities/chest.h"
+
+#include "level/level_loader.h"
+
+#include "utils/collision.h"
+#include "utils/common_vertices.h"
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -53,7 +58,17 @@ namespace Rendering {
     }
 
     void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
-        m_camera.processKeyboardInput(direction, deltaTime);
+        glm::vec3 proposedPosition = m_camera.proposedPosition(direction, deltaTime);
+
+        const float wallWidthBuffer = 1.0f;
+
+        for (GameObject::Wall wall : m_walls) {
+            if (Collision::pointCube(proposedPosition, wall.worldPos(), (wall.width() + wallWidthBuffer)))  {
+                proposedPosition.y = 0.0f;
+            }
+        }
+
+        m_camera.setPos(proposedPosition);
     }
 
     void World::updateCameraMouse(double xposIn, double yposIn) {
