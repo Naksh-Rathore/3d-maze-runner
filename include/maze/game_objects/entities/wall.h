@@ -14,8 +14,8 @@ namespace GameObject {
 
             glm::mat4 modelMatrix() const;
 
-            const glm::vec3& worldPos() { return m_worldPos; }
-            const glm::vec3& scale() { return m_scale; }
+            const glm::vec3& worldPos() const { return m_worldPos; }
+            const glm::vec3& scale() const { return m_scale; }
 
             float width()  const { return m_scale.x; }
             float height() const { return m_scale.y; }

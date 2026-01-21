@@ -62,10 +62,9 @@ namespace Rendering {
 
         const float wallWidthBuffer = 1.0f;
 
-        for (GameObject::Wall wall : m_walls) {
-            if (Collision::pointCube(proposedPosition, wall.worldPos(), (wall.width() + wallWidthBuffer)))  {
-                proposedPosition.y = 0.0f;
-            }
+        for (const GameObject::Wall& wall : m_walls) {
+            float cubeLength = wall.width() + wallWidthBuffer;
+            proposedPosition = Collision::slideOnCube(m_camera.pos(), proposedPosition, wall.worldPos(), cubeLength);
         }
 
         m_camera.setPos(proposedPosition);
