@@ -72,6 +72,20 @@ namespace GameObject {
         m_up = glm::normalize(glm::cross(m_right, m_front));
     }
 
+    glm::vec3 FreeCamera::proposedPosition(CameraDirection direction, float deltaTime) {
+        float camSpeed { this->camSpeed() * deltaTime };
+
+        if (direction == FORWARD)
+            return (pos() + front() * camSpeed);
+        if (direction == BACKWARD)
+            return (pos() - front() * camSpeed);
+        if (direction == RIGHT)  
+            return (pos() + right() * camSpeed);
+        if (direction == LEFT)
+            return (pos() - right() * camSpeed);
+    }
+
+
     WalkCamera::WalkCamera(float groundPos)
         : FreeCamera(glm::vec3(0.0f, groundPos, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.125f)
         , m_groundPos(groundPos)

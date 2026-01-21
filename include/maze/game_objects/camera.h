@@ -40,6 +40,7 @@ namespace GameObject {
         FreeCamera(const glm::vec3& pos, const glm::vec3& front, const glm::vec3& up, float yaw, float pitch, float camSpeed, float mouseSensi);
 
         glm::mat4 viewMatrix();
+        glm::vec3 proposedPosition(CameraDirection direction, float deltaTime);
 
         void processKeyboardInput(CameraDirection direction, float deltaTime);
         void processMouseInput(float xOffset, float yOffset, bool stopRoll = true);
