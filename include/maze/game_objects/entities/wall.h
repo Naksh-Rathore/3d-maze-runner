@@ -19,6 +19,7 @@ namespace GameObject {
 
             float width()  const { return m_scale.x; }
             float height() const { return m_scale.y; }
+            float depth()  const { return m_scale.z; }
 
             // Setters aren't needed **yet** since there is really no dynamic position changes or scale changes
     };
