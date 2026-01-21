@@ -4,8 +4,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace GameObject {
-
-
     class Wall {
         private:
             glm::vec3 m_worldPos;
@@ -18,6 +16,9 @@ namespace GameObject {
 
             const glm::vec3& worldPos() { return m_worldPos; }
             const glm::vec3& scale() { return m_scale; }
+
+            float width() { return m_scale.x; }
+            float height() { return m_scale.y; }
 
             // Setters aren't needed **yet** since there is really no dynamic position changes or scale changes
     };
