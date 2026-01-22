@@ -31,13 +31,16 @@ namespace Rendering {
 
             GameObject::WalkCamera m_playerCamera;
 
+            void populateRenderQueue(std::vector<RenderCommand>& renderQueue);
+            void updateEntities();
+
         public:
             World();
 
             void updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime);
             void updateCameraMouse(double xposIn, double yposIn);
             
-            void setRenderQueue(std::vector<RenderCommand>& renderQueue);
+            void tick(std::vector<RenderCommand>& renderQueue);
 
             GameObject::WalkCamera& playerCamera() { return m_playerCamera; }
     };

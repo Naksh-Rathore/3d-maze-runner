@@ -49,7 +49,7 @@ void Game::mainLoop() {
 
         m_renderQueue.clear();
 
-        m_world.setRenderQueue(m_renderQueue);
+        m_world.tick(m_renderQueue);
         m_renderer.renderQueue(m_renderQueue, m_world.playerCamera().viewMatrix());
 
         glfwSwapBuffers(m_window);

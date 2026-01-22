@@ -43,7 +43,7 @@ namespace Rendering {
         Level::LevelLoader::loadLevel("assets/levels/level1.txt", m_walls, m_chests);
     }
 
-    void World::setRenderQueue(std::vector<RenderCommand>& renderQueue) {
+    void World::populateRenderQueue(std::vector<RenderCommand>& renderQueue) {
         renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
 
         for (GameObject::Wall wall : m_walls) 
@@ -89,5 +89,14 @@ namespace Rendering {
         m_playerCamera.setLastY(ypos);
 
         m_playerCamera.processMouseInput(xoffset, yoffset);
+    }
+
+    void World::updateEntities() {
+        // Do later
+    }
+
+    void World::tick(std::vector<RenderCommand>& renderQueue) {
+        updateEntities();
+        populateRenderQueue(renderQueue);
     }
 }
