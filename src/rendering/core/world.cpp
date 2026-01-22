@@ -46,10 +46,10 @@ namespace Rendering {
     void World::populateRenderQueue(std::vector<RenderCommand>& renderQueue) {
         renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
 
-        for (GameObject::Wall wall : m_walls) 
+        for (GameObject::Wall& wall : m_walls) 
             renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix() });
 
-        for (GameObject::Chest chest : m_chests) {
+        for (const GameObject::Chest& chest : m_chests) {
             if (chest.isCollected())
                 continue;
 
@@ -92,7 +92,8 @@ namespace Rendering {
     }
 
     void World::updateEntities() {
-        // Do later
+        for (GameObject::Chest& chest : m_chests)
+            chest.update(m_playerCamera.pos());
     }
 
     void World::tick(std::vector<RenderCommand>& renderQueue) {
