@@ -19,7 +19,7 @@
 
 namespace Rendering {
     World::World()
-        : m_camera(5.0f)
+        : m_playerCamera(5.0f)
 
         , m_planeMesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
         , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
@@ -58,36 +58,36 @@ namespace Rendering {
     }
 
     void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
-        glm::vec3 proposedPosition = m_camera.proposedPosition(direction, deltaTime);
+        glm::vec3 proposedPosition = m_playerCamera.proposedPosition(direction, deltaTime);
 
         const float wallWidthBuffer = 1.0f;
 
         for (const GameObject::Wall& wall : m_walls) {
             float cubeLength = wall.width() + wallWidthBuffer;
-            proposedPosition = Collision::slideOnCube(m_camera.pos(), proposedPosition, wall.worldPos(), cubeLength);
+            proposedPosition = Collision::slideOnCube(m_playerCamera.pos(), proposedPosition, wall.worldPos(), cubeLength);
         }
 
-        m_camera.setPos(proposedPosition);
+        m_playerCamera.setPos(proposedPosition);
     }
 
     void World::updateCameraMouse(double xposIn, double yposIn) {
         float xpos = static_cast<float>(xposIn);
         float ypos = static_cast<float>(yposIn);
 
-        if (m_camera.firstMouse()) {
-            m_camera.setLastX(xpos);
-            m_camera.setLastY(ypos);
+        if (m_playerCamera.firstMouse()) {
+            m_playerCamera.setLastX(xpos);
+            m_playerCamera.setLastY(ypos);
             
-            m_camera.setFirstMouse(false);
+            m_playerCamera.setFirstMouse(false);
             return;
         }
 
-        float xoffset = xpos - m_camera.lastX();
-        float yoffset = m_camera.lastY() - ypos; // reversed since y-coordinates go from bottom to top
+        float xoffset = xpos - m_playerCamera.lastX();
+        float yoffset = m_playerCamera.lastY() - ypos; // reversed since y-coordinates go from bottom to top
 
-        m_camera.setLastX(xpos);
-        m_camera.setLastY(ypos);
+        m_playerCamera.setLastX(xpos);
+        m_playerCamera.setLastY(ypos);
 
-        m_camera.processMouseInput(xoffset, yoffset);
+        m_playerCamera.processMouseInput(xoffset, yoffset);
     }
 }
