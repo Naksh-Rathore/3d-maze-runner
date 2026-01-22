@@ -1,8 +1,12 @@
 #include "game_objects/entities/chest.h"
 
+#include "utils/collision.h"
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLFW/glfw3.h>
+
+#include <iostream>
 
 namespace GameObject {
     Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale, bool shouldAnimate)
@@ -26,5 +30,14 @@ namespace GameObject {
         model = glm::scale(model, m_scale);
 
         return model;
+    }
+
+    void Chest::update(const glm::vec3& playerPos) {
+        // Prevents costly collision calls if not needed
+        if (m_isCollected)
+            return;
+
+        if (bool result = Collision::pointCube(playerPos, m_worldPos, m_scale.x))
+            m_isCollected = true;
     }
 }

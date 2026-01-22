@@ -15,6 +15,7 @@ namespace GameObject {
             Chest(const glm::vec3& worldPos, const glm::vec3& scale, bool shouldAnimate = true);
 
             glm::mat4 modelMatrix() const;
+            void update(const glm::vec3& playerPos);
 
             // No setters since unnecessary privilege is bad 
             const glm::vec3& worldPos() const { return m_worldPos; }
