@@ -1,0 +1,9 @@
+To Do:
+
+- Port project to CMake and vcpkg with VS 2026 (most top top top top priority, do not continue onto other tasks before this)
+|
+-> Make project cross-compilable (most top top top top priority, do not continue onto other tasks before this)
+
+- Work on collision animation with chests (a lid opening animation with a lid and box quad)
+
+- For debug view, just move the camera's y axis up
