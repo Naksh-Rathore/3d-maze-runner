@@ -13,9 +13,10 @@ This project is licensed under the **MIT License**. Contributions are welcome an
 ---
 
 ## Dependencies
-- `g++` Compiler
-- `make` utility
-- Tested only on **Windows** (using **MinGW**)
+- `C++` Compiler
+- `CMake` utility
+- `vcpkg` for dependency management
+- Only tested on Windows and Ubuntu Linux, feel free to give issues and PRs if not working
 - All dependencies must be in your system PATH
 
 ---
@@ -29,10 +30,22 @@ git clone https://github.com/Naksh-Rathore/3d-maze-runner.git
 cd 3d-maze-runner
 ```
 
-Build the project using make:
+Build the project using either:
 
 ```
-make
+./build.ps1
+```
+
+or:
+
+```
+./build.sh
+```
+
+and run the binary with:
+
+```
+./build/bin/3d-maze-runner
 ```
 
 Play!
