@@ -1,8 +1,6 @@
 To Do:
 
-- Port project to CMake and vcpkg with Neovim and Ninja (most top top top top priority, do not continue onto other tasks before this)
-|
--> Make project cross-compilable (most top top top top priority, do not continue onto other tasks before this)
+- Add Ninja as an option
 
 - Work on collision animation with chests (a lid opening animation with a lid and box quad)
 
