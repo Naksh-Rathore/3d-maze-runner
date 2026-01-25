@@ -30,6 +30,12 @@ git clone https://github.com/Naksh-Rathore/3d-maze-runner.git
 cd 3d-maze-runner
 ```
 
+Install dependencies (once time):
+
+```
+vcpkg install
+```
+
 Build the project using either:
 
 ```
