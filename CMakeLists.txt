@@ -16,11 +16,18 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)
 
+if (WIN32)
+    set(GLFW_LIB glfw)
+else()
+    set(GLFW_LIB glfw3)
+endif()
+
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    glfw3
+    ${GLFW_LIB}
     glad::glad
     glm::glm
 )
+
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_INCLUDE_NONE)
 
