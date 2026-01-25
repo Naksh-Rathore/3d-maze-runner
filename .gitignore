@@ -71,5 +71,3 @@ $RECYCLE.BIN/
 # Misc
 # ===========================
 *.DS_Store
-
-build/
