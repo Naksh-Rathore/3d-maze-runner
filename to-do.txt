@@ -1,6 +1,6 @@
 To Do:
 
-- Port project to CMake and vcpkg with VS 2026 (most top top top top priority, do not continue onto other tasks before this)
+- Port project to CMake and vcpkg with Neovim and Ninja (most top top top top priority, do not continue onto other tasks before this)
 |
 -> Make project cross-compilable (most top top top top priority, do not continue onto other tasks before this)
 

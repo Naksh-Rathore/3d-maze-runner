@@ -1,3 +1,75 @@
 *.exe
 *.o
 .vscode/
+
+# ===========================
+# Windows / OS files
+# ===========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.log
+
+# ===========================
+# Visual Studio / IDE
+# ===========================
+.vs/
+*.VC.db
+*.VC.opendb
+*.user
+*.suo
+*.ncb
+*.sdf
+*.ipch
+*.opensdf
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.idb
+*.iobj
+*.ipdb
+*.ipch
+*.userprefs
+
+# ===========================
+# CMake build folders
+# ===========================
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/cmake-build-*/
+
+# ===========================
+# vcpkg
+# ===========================
+/vcpkg_installed/
+/packages/
+/downloads/
+/buildtrees/
+/installed/
+
+# ===========================
+# Executables / binaries
+# ===========================
+*.exe
+*.dll
+*.lib
+*.a
+*.so
+*.o
+*.obj
+
+# ===========================
+# Assets / temporary
+# ===========================
+*.tmp
+*.bak
+
+# ===========================
+# Misc
+# ===========================
+*.DS_Store
+
+build/
