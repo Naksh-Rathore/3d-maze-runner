@@ -10,7 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(GLFW_BUILD_DOCS OFF)
 option(GLFW_BUILD_EXAMPLES OFF)
 option(GLFW_BUILD_TESTS OFF)
-add_subdirectory(Vendor/glfw)
+add_subdirectory(vendor/glfw)
 
 # Compiler flags
 if(MSVC)
@@ -25,14 +25,14 @@ endif()
 # Include directories
 include_directories(
     include/
-    Vendor/glad/include/
-    Vendor/glfw/include/
-    Vendor/glm/
-    Vendor/stb/
+    vendor/glad/include/
+    vendor/glfw/include/
+    vendor/glm/
+    vendor/stb/
 )
 
 # Vendor sources
-file(GLOB VENDORS_SOURCES Vendor/glad/src/glad.c)
+file(GLOB VENDORS_SOURCES vendor/glad/src/glad.c)
 
 # Recursively get all headers and source files
 file(GLOB_RECURSE PROJECT_HEADERS include/*.hpp)
