@@ -1,6 +1,6 @@
 To Do:
 
-- Add Ninja as an option
+- Fix segfault on Ubuntu WSL2 (top priority)
 
 - Work on collision animation with chests (a lid opening animation with a lid and box quad)
 
