@@ -71,3 +71,6 @@ $RECYCLE.BIN/
 # Misc
 # ===========================
 *.DS_Store
+
+Glitter/
+[Bb]uild/
