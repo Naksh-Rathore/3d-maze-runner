@@ -15,7 +15,6 @@ This project is licensed under the **MIT License**. Contributions are welcome an
 ## Dependencies
 - `C++` Compiler
 - `CMake` utility
-- `vcpkg` for dependency management
 - Only tested on Windows and Ubuntu Linux, feel free to give issues and PRs if not working
 - All dependencies must be in your system PATH
 
@@ -34,19 +33,13 @@ cd 3d-maze-runner
 Build the project using either:
 
 ```
-./build.ps1
-```
-
-or:
-
-```
-./build.sh
+cmake -S . -B build/; cmake --build build/
 ```
 
 and run the binary with:
 
 ```
-./build/bin/3d-maze-runner
+./build/3d-maze-runner/3d-maze-runner
 ```
 
 Play!
