@@ -19,6 +19,12 @@ Game::Game()
 }
 
 Game::~Game() {
+
+    if (m_window) {
+        glfwDestroyWindow(m_window);
+        m_window = nullptr;
+    }
+
     glfwTerminate();
 }
 
