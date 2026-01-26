@@ -10,7 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(GLFW_BUILD_DOCS OFF)
 option(GLFW_BUILD_EXAMPLES OFF)
 option(GLFW_BUILD_TESTS OFF)
-add_subdirectory(3d-maze-runner/Vendor/glfw)
+add_subdirectory(Vendor/glfw)
 
 # Compiler flags
 if(MSVC)
@@ -24,30 +24,30 @@ endif()
 
 # Include directories
 include_directories(
-    3d-maze-runner/include/
-    3d-maze-runner/Vendor/glad/include/
-    3d-maze-runner/Vendor/glfw/include/
-    3d-maze-runner/Vendor/glm/
-    3d-maze-runner/Vendor/stb/
+    include/
+    Vendor/glad/include/
+    Vendor/glfw/include/
+    Vendor/glm/
+    Vendor/stb/
 )
 
 # Vendor sources
-file(GLOB VENDORS_SOURCES 3d-maze-runner/Vendor/glad/src/glad.c)
+file(GLOB VENDORS_SOURCES Vendor/glad/src/glad.c)
 
 # Recursively get all headers and source files
-file(GLOB_RECURSE PROJECT_HEADERS 3d-maze-runner/include/*.hpp)
-file(GLOB_RECURSE PROJECT_SOURCES 3d-maze-runner/src/*.cpp)
+file(GLOB_RECURSE PROJECT_HEADERS include/*.hpp)
+file(GLOB_RECURSE PROJECT_SOURCES src/*.cpp)
 
 # Recursively get all assets: shaders (.vs/.fs) and images (.png/.jpg)
 file(GLOB_RECURSE PROJECT_ASSETS
-    3d-maze-runner/assets/*.vs
-    3d-maze-runner/assets/*.VS
-    3d-maze-runner/assets/*.fs
-    3d-maze-runner/assets/*.FS
-    3d-maze-runner/assets/*.png
-    3d-maze-runner/assets/*.PNG
-    3d-maze-runner/assets/*.jpg
-    3d-maze-runner/assets/*.JPG
+    assets/*.vs
+    assets/*.VS
+    assets/*.fs
+    assets/*.FS
+    assets/*.png
+    assets/*.PNG
+    assets/*.jpg
+    assets/*.JPG
 )
 
 # Project configs
@@ -81,11 +81,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 
 # Copy assets folder after build
-if(EXISTS "${CMAKE_SOURCE_DIR}/3d-maze-runner/assets")
+if(EXISTS "${CMAKE_SOURCE_DIR}/assets")
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-                ${CMAKE_SOURCE_DIR}/3d-maze-runner/assets
+                ${CMAKE_SOURCE_DIR}/assets
                 $<TARGET_FILE_DIR:${PROJECT_NAME}>
         DEPENDS ${PROJECT_ASSETS}
     )
