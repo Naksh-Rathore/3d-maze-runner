@@ -21,10 +21,8 @@ namespace GameObject {
 
         glm::vec3 pos = m_worldPos;
 
-        if (m_shouldAnimate) {
-            float yOffset = std::sin(glfwGetTime()) * 0.50f;
-            pos.y += yOffset;
-        }
+        float yOffset = std::sin(glfwGetTime()) * 0.50f;
+        pos.y += yOffset;
 
         model = glm::translate(model, pos);
         model = glm::scale(model, m_scale);
