@@ -25,7 +25,7 @@ This project is licensed under the **MIT License**. Contributions are welcome an
 Clone the repository:
 
 ```
-git clone https://github.com/Naksh-Rathore/3d-maze-runner.git
+git clone --recurse-submodules https://github.com/Naksh-Rathore/3d-maze-runner.git
 cd 3d-maze-runner
 ```
 
