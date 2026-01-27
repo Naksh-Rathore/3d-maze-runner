@@ -1,7 +1,5 @@
 To Do:
 
-- Fix segfault on Ubuntu WSL2 (top priority) (destructor order?)
-
 - Work on collision animation with chests (a lid opening animation with a lid and box quad)
 
 - For debug view, just move the camera's y axis up
