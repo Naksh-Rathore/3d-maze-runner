@@ -16,6 +16,11 @@ namespace Rendering {
     {
     }
 
+    Shader::~Shader() {
+        if (m_shader != 0)
+            glDeleteShader(m_shader);
+    }
+
     std::string Shader::readShader(const std::string& shaderSourceFile) {
         std::string shaderContents{};
         std::string shaderContentsBuffer{};
@@ -135,4 +140,5 @@ namespace Rendering {
         glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_2D, m_texture.texture());
     }
+
 }

@@ -17,6 +17,7 @@ namespace Rendering {
 
         public:
             Shader(const std::string& shaderSourceFile, GLenum shaderType);
+            ~Shader();
 
             void compileShader();
 
