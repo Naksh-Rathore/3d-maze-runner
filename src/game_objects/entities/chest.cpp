@@ -9,11 +9,11 @@
 #include <iostream>
 
 namespace GameObject {
-    Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale, bool shouldAnimate)
+    Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale)
         : m_worldPos(worldPos)
         , m_scale(scale)
         , m_isCollected(false)
-        , m_shouldAnimate(shouldAnimate)
+        , m_shouldAnimate(false)
     {}
 
     glm::mat4 Chest::modelMatrix() const {

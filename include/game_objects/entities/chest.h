@@ -12,7 +12,7 @@ namespace GameObject {
             bool m_shouldAnimate;
 
         public:
-            Chest(const glm::vec3& worldPos, const glm::vec3& scale, bool shouldAnimate = true);
+            Chest(const glm::vec3& worldPos, const glm::vec3& scale);
 
             glm::mat4 modelMatrix() const;
             void update(const glm::vec3& playerPos);
