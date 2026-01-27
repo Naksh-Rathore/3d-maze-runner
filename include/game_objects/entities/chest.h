@@ -11,8 +11,10 @@ namespace GameObject {
             bool m_isCollected;
             bool m_shouldAnimate;
 
+            float m_amplitude;
+
         public:
-            Chest(const glm::vec3& worldPos, const glm::vec3& scale);
+            Chest(const glm::vec3& worldPos, const glm::vec3& scale, float amplitude = 0.5f);
 
             glm::mat4 modelMatrix() const;
             void update(const glm::vec3& playerPos);
@@ -21,5 +23,6 @@ namespace GameObject {
             const glm::vec3& worldPos() const { return m_worldPos; }
             bool isCollected() const { return m_isCollected; }
             bool shouldAnimate() const { return m_shouldAnimate; }
+            float amplitude() { return m_amplitude; }
     };
 }

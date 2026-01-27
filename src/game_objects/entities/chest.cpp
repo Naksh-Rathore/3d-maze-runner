@@ -9,11 +9,12 @@
 #include <iostream>
 
 namespace GameObject {
-    Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale)
+    Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale, float amplitude)
         : m_worldPos(worldPos)
         , m_scale(scale)
         , m_isCollected(false)
         , m_shouldAnimate(false)
+        , m_amplitude(amplitude)
     {}
 
     glm::mat4 Chest::modelMatrix() const {
@@ -21,7 +22,7 @@ namespace GameObject {
 
         glm::vec3 pos = m_worldPos;
 
-        float yOffset = std::sin(glfwGetTime()) * 0.50f;
+        float yOffset = std::sin(glfwGetTime()) * m_amplitude;
         pos.y += yOffset;
 
         model = glm::translate(model, pos);
