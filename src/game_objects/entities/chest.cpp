@@ -13,7 +13,6 @@ namespace GameObject {
         : m_worldPos(worldPos)
         , m_scale(scale)
         , m_isCollected(false)
-        , m_shouldAnimate(false)
         , m_amplitude(amplitude)
     {}
 
@@ -36,7 +35,7 @@ namespace GameObject {
         if (m_isCollected)
             return;
 
-        if (bool result = Collision::pointCube(playerPos, m_worldPos, m_scale.x))
+        if (Collision::pointCube(playerPos, m_worldPos, m_scale.x))
             m_isCollected = true;
     }
 }

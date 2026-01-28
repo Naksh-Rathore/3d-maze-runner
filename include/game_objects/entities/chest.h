@@ -9,7 +9,6 @@ namespace GameObject {
             glm::vec3 m_scale;
 
             bool m_isCollected;
-            bool m_shouldAnimate;
 
             float m_amplitude;
 
@@ -22,7 +21,6 @@ namespace GameObject {
             // No setters since unnecessary privilege is bad 
             const glm::vec3& worldPos() const { return m_worldPos; }
             bool isCollected() const { return m_isCollected; }
-            bool shouldAnimate() const { return m_shouldAnimate; }
             float amplitude() { return m_amplitude; }
     };
 }
