@@ -76,11 +76,12 @@ namespace GameObject {
     class WalkCamera : public FreeCamera {
         private:
             float m_groundPos;
+            float m_amplitude;
 
         public:
-            WalkCamera(float groundPos = 0.0f);
+            WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f);
 
-            void processKeyboardInput(CameraDirection direction, float deltaTime);
-            glm::vec3 proposedPosition(CameraDirection direction, float deltaTime) const;    
+            void processKeyboardInput(CameraDirection direction, float deltaTime, bool shouldBob = false);
+            glm::vec3 proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob = false) const;    
     };
 }

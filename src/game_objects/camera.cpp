@@ -4,6 +4,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <GLFW/glfw3.h>
+
 namespace GameObject {
     FreeCamera::FreeCamera(const glm::vec3& pos, const glm::vec3& front, const glm::vec3& up, float yaw, float pitch, float camSpeed, float mouseSensi)
     : m_pos { pos }
@@ -73,12 +75,13 @@ namespace GameObject {
     }
 
 
-    WalkCamera::WalkCamera(float groundPos)
+    WalkCamera::WalkCamera(float groundPos, float amplitude)
         : FreeCamera(glm::vec3(0.0f, groundPos, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.08f)
         , m_groundPos(groundPos)
+        , m_amplitude(amplitude)
     {}
 
-    void WalkCamera::processKeyboardInput(CameraDirection direction, float deltaTime) {
+    void WalkCamera::processKeyboardInput(CameraDirection direction, float deltaTime, bool shouldBob) {
         float camSpeed { this->camSpeed() * deltaTime };
 
         if (direction == FORWARD)
@@ -91,12 +94,19 @@ namespace GameObject {
             setPos(pos() - right() * camSpeed);
 
         glm::vec3 currentPos = pos();
+
         currentPos.y = m_groundPos;
+
+        if (shouldBob) {
+            float yOffset = std::sin(glfwGetTime()) * m_amplitude;
+            currentPos.y += yOffset;
+        }
+
 
         setPos(currentPos);
     }
 
-    glm::vec3 WalkCamera::proposedPosition(CameraDirection direction, float deltaTime) const {
+    glm::vec3 WalkCamera::proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob) const {
         float camSpeed { this->camSpeed() * deltaTime };
 
         glm::vec3 proposedPos;
@@ -111,6 +121,11 @@ namespace GameObject {
             proposedPos = pos() - right() * camSpeed;
 
         proposedPos.y = m_groundPos;
+
+        if (shouldBob) {
+            float yOffset = std::sin(glfwGetTime()) * m_amplitude;
+            proposedPos.y += yOffset;
+        }
         
         return proposedPos;
     }

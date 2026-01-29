@@ -37,7 +37,7 @@ namespace Rendering {
         public:
             World();
 
-            void updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime);
+            void updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime, bool shouldBob = false);
             void updateCameraMouse(double xposIn, double yposIn);
             
             void tick(std::vector<RenderCommand>& renderQueue);

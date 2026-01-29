@@ -57,8 +57,8 @@ namespace Rendering {
         }
     }
 
-    void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime) {
-        glm::vec3 proposedPosition = m_playerCamera.proposedPosition(direction, deltaTime);
+    void World::updateCameraKeyboard(GameObject::CameraDirection direction, float deltaTime, bool shouldBob) {
+        glm::vec3 proposedPosition = m_playerCamera.proposedPosition(direction, deltaTime, shouldBob);
 
         const float wallWidthBuffer = 1.0f;
 
