@@ -10,7 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(GLFW_BUILD_DOCS OFF)
 option(GLFW_BUILD_EXAMPLES OFF)
 option(GLFW_BUILD_TESTS OFF)
-add_subdirectory(vendor/glfw)
+add_subdirectory(Vendor//glfw)
 
 # Compiler flags
 if(MSVC)
@@ -25,14 +25,14 @@ endif()
 # Include directories
 include_directories(
     include/
-    vendor/glad/include/
-    vendor/glfw/include/
-    vendor/glm/
-    vendor/stb/
+    Vendor//glad/include/
+    Vendor//glfw/include/
+    Vendor//glm/
+    Vendor//stb/
 )
 
-# Vendor sources
-file(GLOB VENDORS_SOURCES vendor/glad/src/glad.c)
+# Vendor/ sources
+file(GLOB Vendor/S_SOURCES Vendor//glad/src/glad.c)
 
 # Recursively get all headers and source files
 file(GLOB_RECURSE PROJECT_HEADERS include/*.hpp)
@@ -60,7 +60,7 @@ file(GLOB PROJECT_CONFIGS CMakeLists.txt
 # Organize in IDE
 source_group("Headers" FILES ${PROJECT_HEADERS})
 source_group("Sources" FILES ${PROJECT_SOURCES})
-source_group("Vendors" FILES ${VENDORS_SOURCES})
+source_group("Vendor/s" FILES ${Vendor/S_SOURCES})
 source_group("Assets" FILES ${PROJECT_ASSETS})
 
 # Definitions
@@ -70,7 +70,7 @@ add_definitions(-DGLFW_INCLUDE_NONE
 # Executable
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_ASSETS} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES})
+                               ${Vendor/S_SOURCES})
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} glfw
