@@ -1,18 +1,6 @@
 # To Do
 
-- Implement a bobbing player camera that bobs when still (like in DOOM)
-
-Pseudo code:
-
-```cpp
-void Game::processInput(GLFWwindow *window) {
-    // Keyboard input
-    // ....
-
-    // If no keyboard input is given
-    m_world.bobCamera();
-}
-```
+- Fix bobbing camera bug where the camera snaps to `m_groundPos` when moving after idle bobbing (probably fixed by changing `m_groundPos` to match the bobbed position)
 
 - Create a chest collection HUD
 

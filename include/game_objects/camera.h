@@ -10,7 +10,8 @@ namespace GameObject {
         FORWARD,
         BACKWARD,
         LEFT,
-        RIGHT
+        RIGHT,
+        NONE
     };  
 
     class FreeCamera {
@@ -82,6 +83,6 @@ namespace GameObject {
             WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f);
 
             void processKeyboardInput(CameraDirection direction, float deltaTime, bool shouldBob = false);
-            glm::vec3 proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob = false) const;    
+            glm::vec3 proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob = false);    
     };
 }

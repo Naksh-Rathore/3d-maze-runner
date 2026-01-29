@@ -106,10 +106,10 @@ namespace GameObject {
         setPos(currentPos);
     }
 
-    glm::vec3 WalkCamera::proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob) const {
+    glm::vec3 WalkCamera::proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob) {
         float camSpeed { this->camSpeed() * deltaTime };
 
-        glm::vec3 proposedPos;
+        glm::vec3 proposedPos = pos();
 
         if (direction == FORWARD)
             proposedPos = pos() + front() * camSpeed;
