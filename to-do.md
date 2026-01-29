@@ -1,25 +1,19 @@
 # To Do
 
-- Work on collision animation with chests (a spring up animation)
+- Implement a bobbing player camera that bobs when still (like in DOOM)
 
-Pseudocode for the animation:
+Pseudo code:
 
 ```cpp
-glm::mat4 model(1.0f);
+void Game::processInput(GLFWwindow *window) {
+    // Keyboard input
+    // ....
 
-// Do whatever translation you want
-// ...
-
-amplitude = isCollected ? 4.0f : 2.0f
-
-// Do the sine math
-// ...
-
-float yThreshold = 100.0f
-
-// model.pos is pseudocode, i will do it a way actually
-if (model.pos.y >= yThreshold)
-    disappear();
+    // If no keyboard input is given
+    m_world.bobCamera();
+}
 ```
+
+- Create a chest collection HUD
 
 - For debug view, just move the camera's y axis up
