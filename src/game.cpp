@@ -32,35 +32,14 @@ void Game::processInput() {
     if(glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(m_window, true);
 
-    bool anyKeyPressed = false;
-
-    if (glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-        glfwSetWindowShouldClose(m_window, true);
-        anyKeyPressed = true;
-    }
-
-    if (glfwGetKey(m_window, GLFW_KEY_W) == GLFW_PRESS) {
-        m_world.updateCameraKeyboard(GameObject::FORWARD, m_deltaTime);
-        anyKeyPressed = true;
-    }
-
-    if (glfwGetKey(m_window, GLFW_KEY_S) == GLFW_PRESS) {
-        m_world.updateCameraKeyboard(GameObject::BACKWARD, m_deltaTime);
-        anyKeyPressed = true;
-    }
-
-    if (glfwGetKey(m_window, GLFW_KEY_A) == GLFW_PRESS) {
-        m_world.updateCameraKeyboard(GameObject::LEFT, m_deltaTime);
-        anyKeyPressed = true;
-    }
-
-    if (glfwGetKey(m_window, GLFW_KEY_D) == GLFW_PRESS) {
-        m_world.updateCameraKeyboard(GameObject::RIGHT, m_deltaTime);
-        anyKeyPressed = true;
-    }
-
-    if (!anyKeyPressed)
-        m_world.updateCameraKeyboard(GameObject::NONE, m_deltaTime, true);
+    if (glfwGetKey(m_window, GLFW_KEY_W) == GLFW_PRESS)
+        m_world.updateCameraKeyboard(GameObject::FORWARD, m_deltaTime, true);
+    if (glfwGetKey(m_window, GLFW_KEY_S) == GLFW_PRESS)
+        m_world.updateCameraKeyboard(GameObject::BACKWARD, m_deltaTime, true);
+    if (glfwGetKey(m_window, GLFW_KEY_A) == GLFW_PRESS)
+        m_world.updateCameraKeyboard(GameObject::LEFT, m_deltaTime, true);
+    if (glfwGetKey(m_window, GLFW_KEY_D) == GLFW_PRESS)
+        m_world.updateCameraKeyboard(GameObject::RIGHT, m_deltaTime, true);
 }
 
 void Game::mainLoop() {
