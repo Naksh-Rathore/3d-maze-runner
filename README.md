@@ -30,7 +30,7 @@ cd 3d-maze-runner
 ```
 
 
-Build the project using either:
+Build the project using:
 
 ```
 cmake -S . -B build/; cmake --build build/
