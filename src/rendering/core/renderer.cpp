@@ -21,10 +21,10 @@ namespace Rendering {
             glBindVertexArray(command.m_mesh->VAO());
             
             if (command.m_mesh->indices().empty())
-                glDrawArrays(command.m_mesh->drawMode(), 0, command.m_mesh->vertices().size() / command.m_mesh->componentAmount());
+                glDrawArrays(command.m_mesh->drawMode(), 0, (GLsizei) command.m_mesh->vertices().size() / command.m_mesh->componentAmount());
             else {
                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, command.m_mesh->EBO());
-                glDrawElements(command.m_mesh->drawMode(), command.m_mesh->indices().size(), GL_UNSIGNED_INT, nullptr);
+                glDrawElements(command.m_mesh->drawMode(), (GLsizei) command.m_mesh->indices().size(), GL_UNSIGNED_INT, nullptr);
             }
         }
     }
