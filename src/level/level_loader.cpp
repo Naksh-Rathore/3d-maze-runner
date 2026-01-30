@@ -69,6 +69,9 @@ namespace Level {
 
             case '#':
                 return GameObject::Wall(pos, scale);
+
+            default:
+                return std::nullopt;
         }
     }
 
