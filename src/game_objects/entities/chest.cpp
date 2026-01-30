@@ -21,7 +21,7 @@ namespace GameObject {
 
         glm::vec3 pos = m_worldPos;
 
-        float yOffset = std::sin(glfwGetTime()) * m_amplitude;
+        float yOffset = std::sin((float) glfwGetTime()) * m_amplitude;
         pos.y += yOffset;
 
         model = glm::translate(model, pos);
