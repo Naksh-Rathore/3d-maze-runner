@@ -78,7 +78,6 @@ namespace GameObject {
         private:
             float m_groundPos;
             float m_amplitude;
-            float m_currentBobOffset;
             float m_frequency;
 
         public:

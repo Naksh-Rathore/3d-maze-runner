@@ -79,7 +79,6 @@ namespace GameObject {
         : FreeCamera(glm::vec3(0.0f, groundPos, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.08f)
         , m_groundPos(groundPos)
         , m_amplitude(amplitude)
-        , m_currentBobOffset(groundPos)
         , m_frequency(frequency)
     {}
 
@@ -122,10 +121,12 @@ namespace GameObject {
         if (direction == LEFT)
             proposedPos = pos() - right() * camSpeed;
 
-        if (shouldBob) 
-            m_currentBobOffset = std::sin(glfwGetTime() * m_frequency) * m_amplitude;
-        
-        proposedPos.y = m_currentBobOffset + m_groundPos;
+        proposedPos.y = m_groundPos;
+
+        if (shouldBob) {
+            float yOffset = std::sin(glfwGetTime()) * m_amplitude;
+            proposedPos.y += yOffset;
+        }
         
         return proposedPos;
     }
