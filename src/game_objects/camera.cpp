@@ -97,12 +97,10 @@ namespace GameObject {
 
         glm::vec3 currentPos = pos();
 
-        currentPos.y = m_groundPos;
-
-        if (shouldBob) {
-            float yOffset = std::sin(glfwGetTime()) * m_amplitude;
-            currentPos.y += yOffset;
-        }
+        if (shouldBob)
+            m_bobTheta += m_frequency * deltaTime;
+        
+        currentPos.y = m_groundPos + sin(m_bobTheta) * m_amplitude;
 
 
         setPos(currentPos);
