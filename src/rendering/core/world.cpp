@@ -26,7 +26,7 @@ namespace Rendering {
         , m_planeModel(glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)), glm::vec3(50.0f)))
 
         , m_wallMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
-        , m_wallMaterial("assets/wall/vertex.vs", "assets/wall/fragment.fs", "assets/wall/texture.jpg")
+        , m_wallMaterial("assets/wall/vertex.vs", "assets/wall/fragment.fs", "assets/wall/texture.png")
 
         , m_chestMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
         , m_chestMaterial("assets/chest/vertex.vs", "assets/chest/fragment.fs", "assets/chest/texture.png")
