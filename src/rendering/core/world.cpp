@@ -22,14 +22,14 @@ namespace Rendering {
         : m_playerCamera(5.0f)
 
         , m_planeMesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
-        , m_planeMaterial("assets/plane/plane.vs", "assets/plane/plane.fs", "assets/plane/texture.png")
+        , m_planeMaterial("assets/plane/vertex.vs", "assets/plane/fragment.fs", "assets/plane/texture.png")
         , m_planeModel(glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)), glm::vec3(50.0f)))
 
         , m_wallMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
-        , m_wallMaterial("assets/wall/wall.vs", "assets/wall/wall.fs", "assets/wall/texture.jpg")
+        , m_wallMaterial("assets/wall/vertex.vs", "assets/wall/fragment.fs", "assets/wall/texture.jpg")
 
         , m_chestMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
-        , m_chestMaterial("assets/chest/chest.vs", "assets/chest/chest.fs", "assets/chest/texture.png")
+        , m_chestMaterial("assets/chest/vertex.vs", "assets/chest/fragment.fs", "assets/chest/texture.png")
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
