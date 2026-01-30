@@ -13,7 +13,7 @@ namespace GameObject {
             float m_amplitude;
 
         public:
-            Chest(const glm::vec3& worldPos, const glm::vec3& scale, float amplitude = 0.5f);
+            Chest(const glm::vec3& worldPos, const glm::vec3& scale, float amplitude = 0.65f);
 
             glm::mat4 modelMatrix() const;
             void update(const glm::vec3& playerPos);
