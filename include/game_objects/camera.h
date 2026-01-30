@@ -78,6 +78,7 @@ namespace GameObject {
         private:
             float m_groundPos;
             float m_amplitude;
+            float m_currentBobOffset;
 
         public:
             WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f);
