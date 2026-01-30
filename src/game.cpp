@@ -44,7 +44,7 @@ void Game::processInput() {
 
 void Game::mainLoop() {
     while (!glfwWindowShouldClose(m_window)) {
-        float currentTime = glfwGetTime();
+        float currentTime = (float) glfwGetTime();
         m_deltaTime = currentTime - m_lastTime;
         m_lastTime = currentTime;
 
