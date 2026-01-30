@@ -79,6 +79,7 @@ namespace GameObject {
             float m_groundPos;
             float m_amplitude;
             float m_frequency;
+            float m_bobTheta;
 
         public:
             WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f, float frequency = 5.0f);
