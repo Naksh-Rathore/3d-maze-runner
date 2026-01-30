@@ -79,9 +79,10 @@ namespace GameObject {
             float m_groundPos;
             float m_amplitude;
             float m_currentBobOffset;
+            float m_frequency;
 
         public:
-            WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f);
+            WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f, float frequency = 5.0f);
 
             void processKeyboardInput(CameraDirection direction, float deltaTime, bool shouldBob = false);
             glm::vec3 proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob = false);    

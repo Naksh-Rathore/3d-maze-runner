@@ -75,11 +75,12 @@ namespace GameObject {
     }
 
 
-    WalkCamera::WalkCamera(float groundPos, float amplitude)
+    WalkCamera::WalkCamera(float groundPos, float amplitude, float frequency)
         : FreeCamera(glm::vec3(0.0f, groundPos, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 15.0f, 0.08f)
         , m_groundPos(groundPos)
         , m_amplitude(amplitude)
         , m_currentBobOffset(groundPos)
+        , m_frequency(frequency)
     {}
 
     void WalkCamera::processKeyboardInput(CameraDirection direction, float deltaTime, bool shouldBob) {
@@ -122,7 +123,7 @@ namespace GameObject {
             proposedPos = pos() - right() * camSpeed;
 
         if (shouldBob) 
-            m_currentBobOffset = std::sin(glfwGetTime()) * m_amplitude;
+            m_currentBobOffset = std::sin(glfwGetTime() * m_frequency) * m_amplitude;
         
         proposedPos.y = m_currentBobOffset + m_groundPos;
         
