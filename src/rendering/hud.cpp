@@ -34,6 +34,6 @@ namespace Rendering {
     }
 
     glm::mat4& HUD::modelMatrix() {
-        return glm::translate(glm::mat4(1.0f), m_pos);
+        return glm::scale(glm::translate(glm::mat4(1.0f), m_pos), glm::vec3(100.0f));
     }
 }
