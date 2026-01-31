@@ -30,7 +30,7 @@ namespace Rendering {
             glm::mat4 modelMatrix();
 
             Mesh& mesh() { return m_mesh; }
-            ShaderProgram shader() { return m_shader; }    
+            ShaderProgram& shader() { return m_shader; }    
             glm::vec3& pos() { return m_pos; }
             std::vector<Texture2D>& textures() { return m_textures; }
     };
