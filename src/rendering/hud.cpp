@@ -12,6 +12,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 namespace Rendering {
     HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos)
@@ -22,6 +23,9 @@ namespace Rendering {
     {
         m_mesh.uploadData();
         m_mesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
+
+        m_vert.compileShader();
+        m_frag.compileShader();
 
         m_shader.link(m_vert, m_frag);
 
@@ -34,6 +38,8 @@ namespace Rendering {
             m_textures.at(i - 1).link(assetsDirectoryPath + "/texture" + std::to_string(i) + ".png", GL_REPEAT, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
             
             assert(m_textures.at(i - 1).texture() != 0);
+
+            std::cout << "HUD texture ID: " << textures().at(i - 1).texture() << std::endl;
         }
     }
 
