@@ -12,7 +12,6 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 
 namespace Rendering {
     HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos)
@@ -38,8 +37,6 @@ namespace Rendering {
             m_textures.at(i - 1).link(assetsDirectoryPath + "/texture" + std::to_string(i) + ".png", GL_REPEAT, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
             
             assert(m_textures.at(i - 1).texture() != 0);
-
-            std::cout << "HUD texture ID: " << textures().at(i - 1).texture() << std::endl;
         }
     }
 
