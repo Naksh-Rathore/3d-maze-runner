@@ -24,6 +24,8 @@ namespace Rendering {
         m_mesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
 
         m_shader.link(m_vert, m_frag);
+
+        populateTextures(assetsDirectoryPath, numOfTextures);
     }
 
     void HUD::populateTextures(const std::string& assetsDirectoryPath, int numOfTextures) {
@@ -33,7 +35,7 @@ namespace Rendering {
         }
     }
 
-    glm::mat4& HUD::modelMatrix() {
-        return glm::scale(glm::translate(glm::mat4(1.0f), m_pos), glm::vec3(100.0f));
+    glm::mat4 HUD::modelMatrix() {
+        return glm::translate(glm::mat4(1.0f), m_pos) * glm::scale(glm::mat4(1.0f), glm::vec3(100.0f, 100.0f, 1.0f));
     }
 }
