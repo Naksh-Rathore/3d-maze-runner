@@ -36,11 +36,12 @@ namespace Rendering {
         glUseProgram(hud.shader().shaderProgram());
 
         hud.shader().setMat4("model", hud.modelMatrix());
-        hud.shader().setMat4("view", glm::mat4());
-        hud.shader().setMat4("projection", m_projection);
+        hud.shader().setMat4("view", glm::mat4(1.0f));
+        hud.shader().setMat4("projection", m_HUDProjection);
 
-        command.m_material->m_shader.setInt("texture1", 0);
-        
         glBindVertexArray(hud.mesh().VAO());
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, hud.mesh().EBO());
+        glDrawElements(hud.mesh().drawMode(), (GLsizei) hud.mesh().indices().size(), GL_UNSIGNED_INT, nullptr);
     }
 }
