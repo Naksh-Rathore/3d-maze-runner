@@ -7,6 +7,8 @@
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
 
+#include "rendering/hud.h"
+
 namespace Rendering {
     struct RenderCommand {
         Mesh* m_mesh;
@@ -18,10 +20,12 @@ namespace Rendering {
     class Renderer {
         private:
             glm::mat4 m_projection;
+            glm::mat4 m_HUDProjection;
 
         public:
-            Renderer(const glm::mat4& projection);
+            Renderer(const glm::mat4& projection, const glm::mat4& HUDProjection);
             
-            void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view);
+            void renderQueue(const std::vector<RenderCommand>& renderQueue);
+            void renderHUD(const HUD& hud);
     };  
 }

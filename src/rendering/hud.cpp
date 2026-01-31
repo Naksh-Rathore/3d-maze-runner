@@ -14,10 +14,11 @@
 #include <vector>
 
 namespace Rendering {
-    HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures)
+    HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos)
         : m_mesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
         , m_vert(assetsDirectoryPath + "/vertex.vs", GL_VERTEX_SHADER)
         , m_frag(assetsDirectoryPath + "/fragment.fs", GL_FRAGMENT_SHADER)
+        , m_pos(pos)
     {
         m_mesh.uploadData();
         m_mesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
@@ -30,5 +31,9 @@ namespace Rendering {
             m_textures.push_back(Texture2D{});
             m_textures.at(i - 1).link(assetsDirectoryPath + "/texture" + std::to_string(i) + ".png", GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
         }
+    }
+
+    glm::mat4& HUD::modelMatrix() {
+        return glm::translate(glm::mat4(1.0f), m_pos);
     }
 }

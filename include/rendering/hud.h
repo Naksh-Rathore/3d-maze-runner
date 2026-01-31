@@ -3,6 +3,8 @@
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
 
+#include <glm/glm.hpp>
+
 #include <vector>
 #include <string>
 
@@ -18,9 +20,17 @@ namespace Rendering {
 
             std::vector<Texture2D> m_textures;
 
+            glm::vec3 m_pos;
+
             void populateTextures(const std::string& assetsDirectoryPath, int numOfTextures);
 
         public:
-            HUD(const std::string& assetsDirectoryPath, int numOfTextures);
+            HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos);
+
+            glm::mat4& modelMatrix();
+
+            Mesh& mesh() { return m_mesh; }
+            ShaderProgram shader() { return m_shader; }    
+            glm::vec3& pos() { return m_pos; }
     };
 }   
