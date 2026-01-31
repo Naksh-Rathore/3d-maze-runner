@@ -1,11 +1,14 @@
 #pragma once
 
 #include "rendering/core/renderer.h"
+
 #include "game_objects/camera.h"
 #include "game_objects/entities/wall.h"
+
+#include "game_objects/entities/chest.h"
+
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
-#include "game_objects/entities/chest.h"
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
