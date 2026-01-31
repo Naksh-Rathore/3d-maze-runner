@@ -6,7 +6,10 @@
 #include "rendering/material/material.h"
 
 namespace Rendering {
-    Renderer::Renderer(const glm::mat4& projection) : m_projection(projection) {}
+    Renderer::Renderer(const glm::mat4& projection, const glm::mat4& HUDProjection) 
+        : m_projection(projection) 
+        , m_HUDProjection(HUDProjection)
+    {}
 
     void Renderer::renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view) {
         for (const RenderCommand& command : renderQueue) {
@@ -34,5 +37,26 @@ namespace Rendering {
         }
     }
 
+    void Renderer::renderHUD(HUD& hud) {
+        glUseProgram(hud.shader().shaderProgram());
 
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, hud.textures().at(0).texture());
+
+        hud.shader().setMat4("model", hud.modelMatrix());
+        hud.shader().setMat4("view", glm::mat4(1.0f));
+        hud.shader().setMat4("projection", m_HUDProjection);
+
+        hud.shader().setInt("texture1", 0);
+
+        glBindVertexArray(hud.mesh().VAO());
+        
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, hud.mesh().EBO());
+        glDrawElements(hud.mesh().drawMode(), (GLsizei) hud.mesh().indices().size(), GL_UNSIGNED_INT, nullptr);
+
+        glBindTexture(GL_TEXTURE_2D, 0);
+        glUseProgram(0);
+        glBindVertexArray(0);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    }
 }
