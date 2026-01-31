@@ -20,12 +20,10 @@ namespace Rendering {
     class Renderer {
         private:
             glm::mat4 m_projection;
-            glm::mat4 m_HUDProjection;
 
         public:
-            Renderer(const glm::mat4& projection, const glm::mat4& HUDProjection);
+            Renderer(const glm::mat4& projection);
             
             void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view);
-            void renderHUD(HUD& hud);
     };  
 }

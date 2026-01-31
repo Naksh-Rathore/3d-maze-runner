@@ -6,10 +6,7 @@
 #include "rendering/material/material.h"
 
 namespace Rendering {
-    Renderer::Renderer(const glm::mat4& projection, const glm::mat4& HUDProjection)
-        : m_projection(projection) 
-        , m_HUDProjection(HUDProjection)
-    {}
+    Renderer::Renderer(const glm::mat4& projection) : m_projection(projection) {}
 
     void Renderer::renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view) {
         for (const RenderCommand& command : renderQueue) {
@@ -32,16 +29,5 @@ namespace Rendering {
         }
     }
 
-    void Renderer::renderHUD(HUD& hud) {
-        glUseProgram(hud.shader().shaderProgram());
 
-        hud.shader().setMat4("model", hud.modelMatrix());
-        hud.shader().setMat4("view", glm::mat4(1.0f));
-        hud.shader().setMat4("projection", m_HUDProjection);
-
-        glBindVertexArray(hud.mesh().VAO());
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, hud.mesh().EBO());
-        glDrawElements(hud.mesh().drawMode(), (GLsizei) hud.mesh().indices().size(), GL_UNSIGNED_INT, nullptr);
-    }
 }
