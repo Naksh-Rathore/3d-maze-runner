@@ -26,6 +26,11 @@ namespace Rendering {
                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, command.m_mesh->EBO());
                 glDrawElements(command.m_mesh->drawMode(), (GLsizei) command.m_mesh->indices().size(), GL_UNSIGNED_INT, nullptr);
             }
+
+            glBindTexture(GL_TEXTURE_2D, 0);
+            glUseProgram(0);
+            glBindVertexArray(0);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         }
     }
 
