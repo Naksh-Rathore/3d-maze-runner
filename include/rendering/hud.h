@@ -28,7 +28,7 @@ namespace Rendering {
         public:
             HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos);
 
-            glm::mat4 modelMatrix();
+            glm::mat4 modelMatrix() const;
 
             Mesh& mesh() { return m_mesh; }
             ShaderProgram& shader() { return m_shader; }    
