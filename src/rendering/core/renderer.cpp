@@ -40,7 +40,7 @@ namespace Rendering {
     void Renderer::renderHUD(HUD& hud, int textureIndex) {
         glUseProgram(hud.shader().shaderProgram());
 
-        glActiveTexture(GL_TEXTURE0 + textureIndex);
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, hud.textures().at(textureIndex).texture());
 
         hud.shader().setMat4("model", hud.modelMatrix());

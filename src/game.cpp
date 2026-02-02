@@ -67,6 +67,9 @@ void Game::run() {
     glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetWindowUserPointer(m_window, this);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glfwSetCursorPosCallback(m_window, [](GLFWwindow* w, double x, double y){
         Game* game = static_cast<Game*>(glfwGetWindowUserPointer(w));
         game->m_world.updateCameraMouse(x, y);

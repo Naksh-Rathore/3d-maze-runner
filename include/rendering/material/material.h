@@ -68,6 +68,14 @@ namespace Rendering {
         public:
             void link(const std::string& fileName, GLenum wrapOption, GLenum mipMapMinOption, GLenum mipMapMagOption);
 
+            Texture2D() = default;
+
+            Texture2D(const Texture2D&) = delete;
+            Texture2D& operator=(const Texture2D&) = delete;
+
+            Texture2D(Texture2D&& other) noexcept;
+            Texture2D& operator=(Texture2D&& other) noexcept;
+
             ~Texture2D();
 
             GLuint texture() { return m_texture; }

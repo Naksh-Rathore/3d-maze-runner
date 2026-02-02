@@ -33,9 +33,9 @@ namespace Rendering {
 
     void HUD::populateTextures(const std::string& assetsDirectoryPath, int numOfTextures) {
         for (int i = 1; i <= numOfTextures; i++) {
-            m_textures.push_back(Texture2D{});
+            m_textures.emplace_back();
             m_textures.at(i - 1).link(assetsDirectoryPath + "/texture" + std::to_string(i) + ".png", GL_REPEAT, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
-            
+
             assert(m_textures.at(i - 1).texture() != 0);
         }
     }

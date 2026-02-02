@@ -122,6 +122,31 @@ namespace Rendering {
     Texture2D::~Texture2D() {
         glDeleteTextures(1, &m_texture);
     }    
+
+    Texture2D::Texture2D(Texture2D&& other) noexcept
+        : m_texture(other.m_texture), m_hasLinked(other.m_hasLinked)
+    {
+        // Transfer ownership
+        other.m_texture = 0;
+        other.m_hasLinked = false;
+    }
+
+    // Move assignment
+    Texture2D& Texture2D::operator=(Texture2D&& other) noexcept
+    {
+        if (this != &other) {
+            // Delete current texture if any
+            if (m_texture) glDeleteTextures(1, &m_texture);
+
+            // Transfer ownership
+            m_texture = other.m_texture;
+            m_hasLinked = other.m_hasLinked;
+
+            other.m_texture = 0;
+            other.m_hasLinked = false;
+        }
+        return *this;
+    }
     
     Material::Material(const std::string& vertShaderPath, const std::string& fragShaderPath, const std::string& texturePath) 
     : m_vert(vertShaderPath, GL_VERTEX_SHADER)
