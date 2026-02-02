@@ -19,6 +19,7 @@ namespace Rendering {
         , m_vert(assetsDirectoryPath + "/vertex.vs", GL_VERTEX_SHADER)
         , m_frag(assetsDirectoryPath + "/fragment.fs", GL_FRAGMENT_SHADER)
         , m_pos(pos)
+        , m_activeTextureIndex(0)
     {
         m_mesh.uploadData();
         m_mesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));

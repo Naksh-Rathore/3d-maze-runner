@@ -19,6 +19,7 @@ namespace Rendering {
             ShaderProgram m_shader;
 
             std::vector<Texture2D> m_textures;
+            int m_activeTextureIndex;
 
             glm::vec3 m_pos;
 
@@ -33,5 +34,6 @@ namespace Rendering {
             ShaderProgram& shader() { return m_shader; }    
             glm::vec3& pos() { return m_pos; }
             std::vector<Texture2D>& textures() { return m_textures; }
+            int activeTextureIndex() { return m_activeTextureIndex; }
     };
 }   

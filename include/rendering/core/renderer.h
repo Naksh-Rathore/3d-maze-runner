@@ -26,6 +26,6 @@ namespace Rendering {
             Renderer(const glm::mat4& projection, const glm::mat4& HUDProjection);
             
             void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view);
-            void renderHUD(HUD& hud, int textureIndex = 0);
+            void renderHUD(HUD& hud);
     };  
 }
