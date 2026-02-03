@@ -10,6 +10,8 @@
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
 
+#include "rendering/hud.h"
+
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
@@ -34,7 +36,11 @@ namespace Rendering {
 
             GameObject::WalkCamera m_playerCamera;
 
+            Rendering::HUD m_chestCollectionHUD;
+
             void populateRenderQueue(std::vector<RenderCommand>& renderQueue);
+            
+            void updateHUDs();
             void updateEntities();
 
         public:
@@ -46,5 +52,6 @@ namespace Rendering {
             void tick(std::vector<RenderCommand>& renderQueue);
 
             GameObject::WalkCamera& playerCamera() { return m_playerCamera; }
+            HUD& chestCollectionHUD() { return m_chestCollectionHUD; }
     };
 }

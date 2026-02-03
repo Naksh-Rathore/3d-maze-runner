@@ -30,6 +30,8 @@ namespace Rendering {
 
         , m_chestMesh(CommonVertices::CubeVertices, CommonVertices::CubeIndices, 5)
         , m_chestMaterial("assets/chest/vertex.vs", "assets/chest/fragment.fs", "assets/chest/texture.png")
+
+        , m_chestCollectionHUD("assets/chest_collection_hud", 4, glm::vec3(50.0f, 775.0f, 0.0f))
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
@@ -91,6 +93,11 @@ namespace Rendering {
         m_playerCamera.processMouseInput(xoffset, yoffset);
     }
 
+    void World::updateHUDs() {
+        int activeTextureIndex = GameObject::Chest::chestsCollected();
+        m_chestCollectionHUD.setActiveTextureIndex(activeTextureIndex);
+    }
+
     void World::updateEntities() {
         for (GameObject::Chest& chest : m_chests)
             chest.update(m_playerCamera.pos());
@@ -98,6 +105,8 @@ namespace Rendering {
 
     void World::tick(std::vector<RenderCommand>& renderQueue) {
         updateEntities();
+        updateHUDs();
+
         populateRenderQueue(renderQueue);
     }
 }

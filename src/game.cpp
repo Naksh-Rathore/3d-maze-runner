@@ -58,6 +58,10 @@ void Game::mainLoop() {
         m_world.tick(m_renderQueue);
         m_renderer.renderQueue(m_renderQueue, m_world.playerCamera().viewMatrix());
 
+        glDisable(GL_DEPTH_TEST);
+        m_renderer.renderHUD(m_world.chestCollectionHUD());
+        glEnable(GL_DEPTH_TEST);
+
         glfwSwapBuffers(m_window);
         glfwPollEvents();
     }

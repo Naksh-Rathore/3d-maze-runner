@@ -12,6 +12,8 @@ namespace GameObject {
 
             float m_amplitude;
 
+            static int m_chestCollected;
+
         public:
             Chest(const glm::vec3& worldPos, const glm::vec3& scale, float amplitude = 0.65f);
 
@@ -22,5 +24,6 @@ namespace GameObject {
             const glm::vec3& worldPos() const { return m_worldPos; }
             bool isCollected() const { return m_isCollected; }
             float amplitude() { return m_amplitude; }
+            static int chestsCollected() { return m_chestCollected; }
     };
 }

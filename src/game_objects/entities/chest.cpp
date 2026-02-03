@@ -9,6 +9,8 @@
 #include <iostream>
 
 namespace GameObject {
+    int Chest::m_chestCollected = 0;
+
     Chest::Chest(const glm::vec3& worldPos, const glm::vec3& scale, float amplitude)
         : m_worldPos(worldPos)
         , m_scale(scale)
@@ -35,7 +37,9 @@ namespace GameObject {
         if (m_isCollected)
             return;
 
-        if (Collision::pointCube(playerPos, m_worldPos, m_scale.x))
+        if (Collision::pointCube(playerPos, m_worldPos, m_scale.x)) {
             m_isCollected = true;
+            m_chestCollected++;
+        }
     }
 }
