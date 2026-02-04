@@ -1,5 +1,5 @@
 # To Do
 
-- Implement the timer HUD
+- Implement the timer text
 
 - For debug view, just move the camera's y axis up
