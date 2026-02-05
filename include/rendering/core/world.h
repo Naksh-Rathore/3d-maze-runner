@@ -37,6 +37,7 @@ namespace Rendering {
             GameObject::WalkCamera m_playerCamera;
 
             Rendering::HUD m_chestCollectionHUD;
+            Rendering::HUD m_timerBorderHUD;
 
             void populateRenderQueue(std::vector<RenderCommand>& renderQueue);
             
@@ -52,6 +53,8 @@ namespace Rendering {
             void tick(std::vector<RenderCommand>& renderQueue);
 
             GameObject::WalkCamera& playerCamera() { return m_playerCamera; }
+
             HUD& chestCollectionHUD() { return m_chestCollectionHUD; }
+            HUD& timerBorderHUD() { return m_timerBorderHUD; }
     };
 }
