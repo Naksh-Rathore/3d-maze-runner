@@ -22,11 +22,12 @@ namespace Rendering {
             int m_activeTextureIndex;
 
             glm::vec3 m_pos;
+            glm::vec3 m_scale;
 
             void populateTextures(const std::string& assetsDirectoryPath, int numOfTextures);
 
         public:
-            HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos);
+            HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale = glm::vec3(1.0f));
 
             glm::mat4 modelMatrix() const;
 
@@ -37,5 +38,8 @@ namespace Rendering {
 
             int activeTextureIndex() { return m_activeTextureIndex; }
             void setActiveTextureIndex(int a) { m_activeTextureIndex = a; }
+
+            glm::vec3 scale() { return m_scale; }
+            void setScale(const glm::vec3& s) { m_scale = s; }
     };
 }   

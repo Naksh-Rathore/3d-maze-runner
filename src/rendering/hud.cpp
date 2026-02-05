@@ -14,12 +14,13 @@
 #include <vector>
 
 namespace Rendering {
-    HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos)
+    HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale)
         : m_mesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
         , m_vert(assetsDirectoryPath + "/vertex.vs", GL_VERTEX_SHADER)
         , m_frag(assetsDirectoryPath + "/fragment.fs", GL_FRAGMENT_SHADER)
         , m_pos(pos)
         , m_activeTextureIndex(0)
+        , m_scale(scale)
     {
         m_mesh.uploadData();
         m_mesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
@@ -42,6 +43,11 @@ namespace Rendering {
     }
 
     glm::mat4 HUD::modelMatrix() const {
-        return glm::translate(glm::mat4(1.0f), m_pos) * glm::scale(glm::mat4(1.0f), glm::vec3(500.0f, 275.0f, 1.0f));
+        glm::mat4 model(1.0f);
+
+        model = glm::translate(model, m_pos);
+        model = glm::scale(model, m_scale);
+
+        return model;
     }
 }
