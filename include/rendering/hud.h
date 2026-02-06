@@ -33,7 +33,6 @@ namespace Rendering {
 
             Mesh& mesh() { return m_mesh; }
             ShaderProgram& shader() { return m_shader; }    
-            glm::vec3& pos() { return m_pos; }
             std::vector<Texture2D>& textures() { return m_textures; }
 
             int activeTextureIndex() { return m_activeTextureIndex; }
@@ -41,5 +40,8 @@ namespace Rendering {
 
             glm::vec3 scale() { return m_scale; }
             void setScale(const glm::vec3& s) { m_scale = s; }
+
+            glm::vec3 pos() { return m_pos; }
+            void setPos(const glm::vec3& p) { m_pos = p; }
     };
 }   
