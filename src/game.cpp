@@ -61,6 +61,7 @@ void Game::mainLoop() {
         glDisable(GL_DEPTH_TEST);
         m_renderer.renderHUD(m_world.chestCollectionHUD());
         m_renderer.renderHUD(m_world.timerBorderHUD());
+        m_renderer.renderHUD(m_world.timerBodyHUD());
         glEnable(GL_DEPTH_TEST);
 
         glfwSwapBuffers(m_window);

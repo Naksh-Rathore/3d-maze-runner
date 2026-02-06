@@ -33,6 +33,7 @@ namespace Rendering {
 
         , m_chestCollectionHUD("assets/chest_collection_hud", 4, glm::vec3(175.0f, 750.0f, 0.0f), glm::vec3(500.0f, 275.0f, 1.0f))
         , m_timerBorderHUD("assets/timer_border_hud", 1, glm::vec3(650.0f, 725.0f, 0.0f), glm::vec3(350.0f, 150.0f, 1.0f))
+        , m_timerBodyHUD("assets/timer_body_hud", 1, glm::vec3(650.0f, 721.0f, 0.0f), glm::vec3(270.0f, 108.0f, 1.0f))
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 2, 5 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));

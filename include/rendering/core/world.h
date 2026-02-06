@@ -38,6 +38,7 @@ namespace Rendering {
 
             Rendering::HUD m_chestCollectionHUD;
             Rendering::HUD m_timerBorderHUD;
+            Rendering::HUD m_timerBodyHUD;
 
             void populateRenderQueue(std::vector<RenderCommand>& renderQueue);
             
@@ -56,5 +57,6 @@ namespace Rendering {
 
             HUD& chestCollectionHUD() { return m_chestCollectionHUD; }
             HUD& timerBorderHUD() { return m_timerBorderHUD; }
+            HUD& timerBodyHUD() { return m_timerBodyHUD; }
     };
 }
