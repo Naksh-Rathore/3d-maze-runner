@@ -1,7 +1,6 @@
 # To Do
 
-- Make the timer HUD more *clean*
-- Add phong lighting
 - Add win/loss
+- Add phong lighting
 
 - For debug view, just move the camera's y axis up
