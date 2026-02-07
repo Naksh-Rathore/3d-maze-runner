@@ -3,6 +3,8 @@
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"
 
+#include "utils/common_vertices.h"
+
 #include <glm/glm.hpp>
 
 #include <vector>
@@ -27,7 +29,7 @@ namespace Rendering {
             void populateTextures(const std::string& assetsDirectoryPath, int numOfTextures);
 
         public:
-            HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale = glm::vec3(1.0f));
+            HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale = glm::vec3(1.0f), const std::vector<GLfloat>& vertices = CommonVertices::SquareVertices, const std::vector<GLuint>& indices = CommonVertices::SquareIndices);
 
             glm::mat4 modelMatrix() const;
 

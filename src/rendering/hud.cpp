@@ -14,8 +14,8 @@
 #include <vector>
 
 namespace Rendering {
-    HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale)
-        : m_mesh(CommonVertices::SquareVertices, CommonVertices::SquareIndices, 5)
+    HUD::HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale, const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices)
+        : m_mesh(vertices, indices, 5)
         , m_vert(assetsDirectoryPath + "/vertex.vs", GL_VERTEX_SHADER)
         , m_frag(assetsDirectoryPath + "/fragment.fs", GL_FRAGMENT_SHADER)
         , m_pos(pos)
