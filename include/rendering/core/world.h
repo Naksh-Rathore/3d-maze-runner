@@ -3,8 +3,9 @@
 #include "rendering/core/renderer.h"
 
 #include "game_objects/camera.h"
-#include "game_objects/entities/wall.h"
+#include "game_objects/timer.h"
 
+#include "game_objects/entities/wall.h"
 #include "game_objects/entities/chest.h"
 
 #include "rendering/geometry/mesh.h"
@@ -39,6 +40,8 @@ namespace Rendering {
             Rendering::HUD m_chestCollectionHUD;
             Rendering::HUD m_timerBorderHUD;
             Rendering::HUD m_timerBodyHUD;
+
+            GameObject::Timer m_timer;
 
             void populateRenderQueue(std::vector<RenderCommand>& renderQueue);
             
