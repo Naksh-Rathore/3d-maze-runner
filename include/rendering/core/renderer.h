@@ -3,6 +3,8 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
+#include <unordered_map>
+#include <string>
 
 #include "rendering/geometry/mesh.h"
 #include "rendering/material/material.h"

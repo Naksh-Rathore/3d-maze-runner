@@ -49,6 +49,9 @@ namespace Rendering {
 
         hud.shader().setInt("texture1", 0);
 
+        for (const auto& [name, value] : hud.customFloatUniforms())
+            hud.shader().setFloat(name.c_str(), value);
+
         glBindVertexArray(hud.mesh().VAO());
         
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, hud.mesh().EBO());

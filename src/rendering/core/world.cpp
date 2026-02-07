@@ -104,14 +104,8 @@ namespace Rendering {
         int activeTextureIndex = GameObject::Chest::chestsCollected();
         m_chestCollectionHUD.setActiveTextureIndex(activeTextureIndex);
 
-        // Fix architecture leak later? (learning project so it isn't fatal)
-        glUseProgram(m_timerBodyHUD.shader().shaderProgram());
-
         m_timer.tick();
-
-        m_timerBodyHUD.shader().setFloat("timerRatio", m_timer.ratio);
-
-        glUseProgram(0);
+        m_timerBodyHUD.editCustomFloatUniform("timerRatio", m_timer.ratio);
     }
 
     void World::updateEntities() {

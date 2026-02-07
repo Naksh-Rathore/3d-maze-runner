@@ -8,6 +8,7 @@
 #include <glm/glm.hpp>
 
 #include <vector>
+#include <unordered_map>
 #include <string>
 
 namespace Rendering {
@@ -26,12 +27,17 @@ namespace Rendering {
             glm::vec3 m_pos;
             glm::vec3 m_scale;
 
+            std::unordered_map<std::string, float> m_customFloatUniforms;
+
             void populateTextures(const std::string& assetsDirectoryPath, int numOfTextures);
 
         public:
             HUD(const std::string& assetsDirectoryPath, int numOfTextures, const glm::vec3& pos, const glm::vec3& scale = glm::vec3(1.0f), const std::vector<GLfloat>& vertices = CommonVertices::SquareVertices, const std::vector<GLuint>& indices = CommonVertices::SquareIndices);
 
             glm::mat4 modelMatrix() const;
+
+            const std::unordered_map<std::string, float>& customFloatUniforms() { return m_customFloatUniforms; }
+            void editCustomFloatUniform(const std::string& name, float value) { m_customFloatUniforms[name] = value; }
 
             Mesh& mesh() { return m_mesh; }
             ShaderProgram& shader() { return m_shader; }    
