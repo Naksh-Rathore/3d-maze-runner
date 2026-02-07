@@ -33,7 +33,8 @@ cd 3d-maze-runner
 Build the project using:
 
 ```
-cmake -S . -B build/; cmake --build build/
+cmake -S . -B build/
+cmake --build build/
 ```
 
 and run the binary with:
