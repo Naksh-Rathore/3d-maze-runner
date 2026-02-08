@@ -20,8 +20,11 @@ class Game {
         float m_deltaTime;
         float m_lastTime;
 
+        bool m_isRunning;
+
         void mainLoop();
         void processInput();
+        void winLossCheck();
 
     public:
         Game();

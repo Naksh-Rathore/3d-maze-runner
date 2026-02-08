@@ -14,6 +14,7 @@
 Game::Game() 
     : m_window(Init::initOpenGL())
     , m_renderer(glm::perspective(glm::radians(45.0f), 800.0f / 800.0f, 0.1f, 100.0f), glm::ortho(0.0f, 800.0f, 0.0f, 800.0f, -1.0f, 1.0f))
+    , m_isRunning(true)
 {
     assert(m_window != nullptr);
 }
@@ -43,7 +44,7 @@ void Game::processInput() {
 }
 
 void Game::mainLoop() {
-    while (!glfwWindowShouldClose(m_window)) {
+    while (!glfwWindowShouldClose(m_window) && m_isRunning) {
         float currentTime = (float) glfwGetTime();
         m_deltaTime = currentTime - m_lastTime;
         m_lastTime = currentTime;
@@ -63,6 +64,8 @@ void Game::mainLoop() {
         m_renderer.renderHUD(m_world.timerBorderHUD());
         m_renderer.renderHUD(m_world.timerBodyHUD());
         glEnable(GL_DEPTH_TEST);
+
+        winLossCheck();
 
         glfwSwapBuffers(m_window);
         glfwPollEvents();
@@ -84,4 +87,16 @@ void Game::run() {
     glEnable(GL_DEPTH_TEST);
 
     mainLoop();
+}
+
+void Game::winLossCheck() {
+    if (GameObject::Chest::chestsCollected() >= 3 && m_world.timer().ratio > 0.0f) {
+        std::cout << "You win!" << "\n";
+        m_isRunning = false;
+    }
+
+    else if (GameObject::Chest::chestsCollected() < 3 && m_world.timer().ratio <= 0.0f ){
+        std::cout << "You lose!" << "\n";
+        m_isRunning = false;
+    }
 }

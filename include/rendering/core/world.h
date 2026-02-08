@@ -61,5 +61,7 @@ namespace Rendering {
             HUD& chestCollectionHUD() { return m_chestCollectionHUD; }
             HUD& timerBorderHUD() { return m_timerBorderHUD; }
             HUD& timerBodyHUD() { return m_timerBodyHUD; }
+
+            GameObject::Timer timer() { return m_timer; }
     };
 }
