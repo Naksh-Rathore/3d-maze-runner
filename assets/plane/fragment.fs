@@ -37,7 +37,7 @@ void main()
     
     // Diffuse 
     vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(FragPos - light.position); // light → fragment
+    vec3 lightDir = normalize(light.position - FragPos); // light → fragment
     float diff = max(dot(norm, lightDir), 0.0);
     vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;  
     
@@ -48,7 +48,7 @@ void main()
     vec3 specular = light.specular * spec;  // removed texture()
     
     // Spotlight (soft edges)
-    float theta = dot(lightDir, normalize(light.direction));
+    float theta = dot(lightDir, normalize(-light.direction)); 
     float epsilon = (light.cutOff - light.outerCutOff);
     float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
     diffuse  *= intensity;

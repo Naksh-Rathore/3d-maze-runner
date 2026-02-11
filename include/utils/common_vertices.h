@@ -6,10 +6,10 @@ struct CommonVertices
 {
     static inline const std::vector<float> SquareVertices = {
         // pos                  // normal         // uv
-        -0.5f, -0.5f, 0.0f,     0.f, 0.f, 1.f,     0.f, 0.f, // bottom-left
-        0.5f, -0.5f, 0.0f,     0.f, 0.f, 1.f,     1.f, 0.f, // bottom-right
-        0.5f,  0.5f, 0.0f,     0.f, 0.f, 1.f,     1.f, 1.f, // top-right
-        -0.5f,  0.5f, 0.0f,     0.f, 0.f, 1.f,     0.f, 1.f  // top-left
+        -0.5f, 0.0f, -0.5f,     0.f, 1.f, 0.f,     0.f, 0.f,
+        0.5f, 0.0f, -0.5f,     0.f, 1.f, 0.f,     1.f, 0.f,
+        0.5f, 0.0f,  0.5f,     0.f, 1.f, 0.f,     1.f, 1.f,
+        -0.5f, 0.0f,  0.5f,     0.f, 1.f, 0.f,     0.f, 1.f
     };
 
     static inline const std::vector<float> SquareVerticesNoNormals {
