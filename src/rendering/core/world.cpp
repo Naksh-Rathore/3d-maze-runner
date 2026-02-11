@@ -65,7 +65,7 @@ namespace Rendering {
             if (chest.isCollected())
                 continue;
 
-            renderQueue.push_back({ &m_chestMesh, &m_chestMaterial, chest.modelMatrix(), false });
+            renderQueue.push_back({ &m_chestMesh, &m_chestMaterial, chest.modelMatrix(), true });
         }
     }
 
