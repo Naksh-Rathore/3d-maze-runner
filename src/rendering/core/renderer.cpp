@@ -1,5 +1,7 @@
 #include <glad/glad.h>
+
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "rendering/core/renderer.h"
 #include "rendering/geometry/mesh.h"
@@ -11,7 +13,7 @@ namespace Rendering {
         , m_HUDProjection(HUDProjection)
     {}
 
-    void Renderer::renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view) {
+    void Renderer::renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view, const glm::vec3& cameraPos, const glm::vec3& cameraFront) {
         for (const RenderCommand& command : renderQueue) {
             command.m_material->use(0);
             
@@ -22,7 +24,25 @@ namespace Rendering {
             command.m_material->m_shader.setInt("texture1", 0);
 
             if (command.isConeLit) {
-                // To-do: Set up cone phong lighting uniforms
+                command.m_material->m_shader.setVec3("light.position", cameraPos);
+                command.m_material->m_shader.setVec3("light.direction", glm::normalize(cameraFront));
+                command.m_material->m_shader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+                command.m_material->m_shader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
+                command.m_material->m_shader.setVec3("viewPos", cameraPos);
+
+                // light properties
+                command.m_material->m_shader.setVec3("light.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+                // we configure the diffuse intensity slightly higher; the right lighting conditions differ with each lighting method and environment.
+                // each environment and lighting type requires some tweaking to get the best out of your environment.
+                command.m_material->m_shader.setVec3("light.diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+                command.m_material->m_shader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+                command.m_material->m_shader.setFloat("light.constant", 1.0f);
+                command.m_material->m_shader.setFloat("light.linear", 0.09f);
+                command.m_material->m_shader.setFloat("light.quadratic", 0.032f);
+
+                // material properties
+                command.m_material->m_shader.setFloat("material.shininess", 32.0f);
+                command.m_material->m_shader.setInt("material.diffuse", 0);
             }
 
             glBindVertexArray(command.m_mesh->VAO());

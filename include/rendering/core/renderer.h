@@ -28,7 +28,7 @@ namespace Rendering {
         public:
             Renderer(const glm::mat4& projection, const glm::mat4& HUDProjection);
             
-            void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view);
+            void renderQueue(const std::vector<RenderCommand>& renderQueue, const glm::mat4& view, const glm::vec3& cameraPos, const glm::vec3& cameraFront);
             void renderHUD(HUD& hud);
     };  
 }

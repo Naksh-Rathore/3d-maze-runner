@@ -56,7 +56,7 @@ namespace Rendering {
     }
 
     void World::populateRenderQueue(std::vector<RenderCommand>& renderQueue) {
-        renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
+        renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel, true });
 
         for (GameObject::Wall& wall : m_walls) 
             renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix(), false });

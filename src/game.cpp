@@ -57,7 +57,7 @@ void Game::mainLoop() {
         m_renderQueue.clear();
 
         m_world.tick(m_renderQueue);
-        m_renderer.renderQueue(m_renderQueue, m_world.playerCamera().viewMatrix());
+        m_renderer.renderQueue(m_renderQueue, m_world.playerCamera().viewMatrix(), m_world.playerCamera().pos(), m_world.playerCamera().front());
 
         glDisable(GL_DEPTH_TEST);
         m_renderer.renderHUD(m_world.chestCollectionHUD());
