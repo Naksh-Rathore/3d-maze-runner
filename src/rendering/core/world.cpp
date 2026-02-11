@@ -42,15 +42,15 @@ namespace Rendering {
     {
         m_planeMesh.uploadData();
         m_planeMesh.uploadComponent(1, 3, 8 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
-        m_planeMesh.uploadComponent(1, 2, 8 * sizeof(GLfloat), (void *)(6 * sizeof(GLfloat)));
+        m_planeMesh.uploadComponent(2, 2, 8 * sizeof(GLfloat), (void *)(6 * sizeof(GLfloat)));
     
         m_wallMesh.uploadData();
         m_wallMesh.uploadComponent(1, 3, 8 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
-        m_wallMesh.uploadComponent(1, 2, 8 * sizeof(GLfloat), (void *)(6 * sizeof(GLfloat)));
+        m_wallMesh.uploadComponent(2, 2, 8 * sizeof(GLfloat), (void *)(6 * sizeof(GLfloat)));
 
         m_chestMesh.uploadData();
         m_chestMesh.uploadComponent(1, 3, 8 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
-        m_chestMesh.uploadComponent(1, 2, 8 * sizeof(GLfloat), (void *)(6 * sizeof(GLfloat)));
+        m_chestMesh.uploadComponent(2, 2, 8 * sizeof(GLfloat), (void *)(6 * sizeof(GLfloat)));
 
         Level::LevelLoader::loadLevel("assets/levels/level1.txt", m_walls, m_chests);
     }
