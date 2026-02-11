@@ -4,14 +4,20 @@
 
 struct CommonVertices
 {
-    // -------- Vertex layout --------
-    // vec3 position, vec2 uv
     static inline const std::vector<float> SquareVertices = {
-        // pos              // uv
-        -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, // bottom-left
-         0.5f, -0.5f, 0.0f,  1.0f, 0.0f, // bottom-right
-         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, // top-right
-        -0.5f,  0.5f, 0.0f,  0.0f, 1.0f  // top-left
+        // pos                  // normal         // uv
+        -0.5f, -0.5f, 0.0f,     0.f, 0.f, 1.f,     0.f, 0.f, // bottom-left
+        0.5f, -0.5f, 0.0f,     0.f, 0.f, 1.f,     1.f, 0.f, // bottom-right
+        0.5f,  0.5f, 0.0f,     0.f, 0.f, 1.f,     1.f, 1.f, // top-right
+        -0.5f,  0.5f, 0.0f,     0.f, 0.f, 1.f,     0.f, 1.f  // top-left
+    };
+
+    static inline const std::vector<float> SquareVerticesNoNormals {
+        // pos                // uv
+        -0.5f, -0.5f, 0.0f,    0.f, 0.f, // bottom-left
+        0.5f, -0.5f, 0.0f,    1.f, 0.f, // bottom-right
+        0.5f,  0.5f, 0.0f,    1.f, 1.f, // top-right
+        -0.5f,  0.5f, 0.0f,    0.f, 1.f  // top-left
     };
 
     static inline const std::vector<unsigned int> SquareIndices = {
@@ -19,45 +25,45 @@ struct CommonVertices
         2, 3, 0
     };
 
-    // -------- Cube --------
-    // 6 faces * 4 vertices (no sharing to allow correct UVs)
+
     static inline const std::vector<float> CubeVertices = {
-        // ---- Front ----
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        // -------- Front (+Z) --------
+        -0.5f, -0.5f,  0.5f,   0.f, 0.f, 1.f,   0.f, 0.f,
+        0.5f, -0.5f,  0.5f,   0.f, 0.f, 1.f,   1.f, 0.f,
+        0.5f,  0.5f,  0.5f,   0.f, 0.f, 1.f,   1.f, 1.f,
+        -0.5f,  0.5f,  0.5f,   0.f, 0.f, 1.f,   0.f, 1.f,
 
-        // ---- Back ----
-         0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        // -------- Back (-Z) --------
+        0.5f, -0.5f, -0.5f,   0.f, 0.f,-1.f,   0.f, 0.f,
+        -0.5f, -0.5f, -0.5f,   0.f, 0.f,-1.f,   1.f, 0.f,
+        -0.5f,  0.5f, -0.5f,   0.f, 0.f,-1.f,   1.f, 1.f,
+        0.5f,  0.5f, -0.5f,   0.f, 0.f,-1.f,   0.f, 1.f,
 
-        // ---- Left ----
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        // -------- Left (-X) --------
+        -0.5f, -0.5f, -0.5f,  -1.f, 0.f, 0.f,   0.f, 0.f,
+        -0.5f, -0.5f,  0.5f,  -1.f, 0.f, 0.f,   1.f, 0.f,
+        -0.5f,  0.5f,  0.5f,  -1.f, 0.f, 0.f,   1.f, 1.f,
+        -0.5f,  0.5f, -0.5f,  -1.f, 0.f, 0.f,   0.f, 1.f,
 
-        // ---- Right ----
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        // -------- Right (+X) --------
+        0.5f, -0.5f,  0.5f,   1.f, 0.f, 0.f,   0.f, 0.f,
+        0.5f, -0.5f, -0.5f,   1.f, 0.f, 0.f,   1.f, 0.f,
+        0.5f,  0.5f, -0.5f,   1.f, 0.f, 0.f,   1.f, 1.f,
+        0.5f,  0.5f,  0.5f,   1.f, 0.f, 0.f,   0.f, 1.f,
 
-        // ---- Top ----
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        // -------- Top (+Y) --------
+        -0.5f,  0.5f,  0.5f,   0.f, 1.f, 0.f,   0.f, 0.f,
+        0.5f,  0.5f,  0.5f,   0.f, 1.f, 0.f,   1.f, 0.f,
+        0.5f,  0.5f, -0.5f,   0.f, 1.f, 0.f,   1.f, 1.f,
+        -0.5f,  0.5f, -0.5f,   0.f, 1.f, 0.f,   0.f, 1.f,
 
-        // ---- Bottom ----
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 1.0f
+        // -------- Bottom (-Y) --------
+        -0.5f, -0.5f, -0.5f,   0.f,-1.f, 0.f,   0.f, 0.f,
+        0.5f, -0.5f, -0.5f,   0.f,-1.f, 0.f,   1.f, 0.f,
+        0.5f, -0.5f,  0.5f,   0.f,-1.f, 0.f,   1.f, 1.f,
+        -0.5f, -0.5f,  0.5f,   0.f,-1.f, 0.f,   0.f, 1.f
     };
+
 
     static inline const std::vector<unsigned int> CubeIndices = {
         0,  1,  2,  2,  3,  0,   // front
