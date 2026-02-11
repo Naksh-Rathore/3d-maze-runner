@@ -56,13 +56,13 @@ namespace Rendering {
         renderQueue.push_back({ &m_planeMesh, &m_planeMaterial, m_planeModel});
 
         for (GameObject::Wall& wall : m_walls) 
-            renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix() });
+            renderQueue.push_back({ &m_wallMesh, &m_wallMaterial, wall.modelMatrix(), false });
 
         for (const GameObject::Chest& chest : m_chests) {
             if (chest.isCollected())
                 continue;
 
-            renderQueue.push_back({ &m_chestMesh, &m_chestMaterial, chest.modelMatrix() });
+            renderQueue.push_back({ &m_chestMesh, &m_chestMaterial, chest.modelMatrix(), false });
         }
     }
 

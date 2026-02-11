@@ -17,6 +17,7 @@ namespace Rendering {
         Material* m_material;
 
         glm::mat4 model;
+        bool isConeLit;
     };
 
     class Renderer {
