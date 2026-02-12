@@ -82,7 +82,7 @@ namespace GameObject {
             float m_bobTheta;
 
         public:
-            WalkCamera(float groundPos = 0.0f, float amplitude = 0.5f, float frequency = 5.0f);
+            WalkCamera(float groundPos = 0.0f, float amplitude = 0.25f, float frequency = 7.5f);
 
             void processKeyboardInput(CameraDirection direction, float deltaTime, bool shouldBob = false);
             glm::vec3 proposedPosition(CameraDirection direction, float deltaTime, bool shouldBob = false);    
