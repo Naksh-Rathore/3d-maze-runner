@@ -18,7 +18,7 @@ This project is licensed under the **MIT License**. Contributions are welcome an
 ## Dependencies
 - `C++` Compiler
 - `CMake` utility
-- Only tested on Windows and Ubuntu Linux (other OSes have a chance of not working)
+- Only tested on Windows and Fedora Linux (other OSes have a chance of not working)
 - All dependencies must be in your system PATH
 
 ---
