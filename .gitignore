@@ -72,5 +72,5 @@ $RECYCLE.BIN/
 # ===========================
 *.DS_Store
 
-Glitter/
+.cache/
 [Bb]uild/
