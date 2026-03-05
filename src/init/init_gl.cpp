@@ -6,8 +6,11 @@
 #include <GLFW/glfw3.h>
 
 namespace Init {
-    void framebuffer_size_callback([[maybe_unused]] GLFWwindow *window, int width, int height) {
-        glViewport(0, 0, width, height);
+    void framebuffer_size_callback(GLFWwindow *window, [[maybe_unused]] int width, [[maybe_unused]] int height) {
+        int frameBufferWidth, frameBufferHeight;
+
+        glfwGetFramebufferSize(window, &frameBufferWidth, &frameBufferHeight);
+        glViewport(0, 0, frameBufferWidth, frameBufferHeight);
     }
 
     GLFWwindow* initOpenGL() {
@@ -20,7 +23,7 @@ namespace Init {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        GLFWwindow *window { glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "3D Maze Runner", nullptr, nullptr) };
+        GLFWwindow *window { glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Graphing Calculator", nullptr, nullptr) };
 
         if (window == nullptr) {
             std::cerr << "Failed to create GLFW window\n";
@@ -38,8 +41,11 @@ namespace Init {
             return nullptr;
         }
 
-        glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        int frameBufferWidth, frameBufferHeight;
 
+        glfwGetFramebufferSize(window, &frameBufferWidth, &frameBufferHeight);
+        glViewport(0, 0, frameBufferWidth, frameBufferHeight);
+        
         return window;
     }
 }
